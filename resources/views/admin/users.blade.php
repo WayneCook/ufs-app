@@ -2,15 +2,29 @@
 @extends('adminlte::page')
 
 @section('css')
-    {{-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css"> --}}
+    {{-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> --}}
+    {{-- <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css"> --}}
+    {{-- Responive datatable --}}
+    <link rel="stylesheet" href="https://cdn.datatables.net/rowreorder/1.2.5/css/rowReorder.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css">
+
 @stop
 
 @section('content_header')
-    <h1>messages</h1>
 
-
-    <table class="table table-bordered" id="users-table">
+    <div class="box box-warning">
+        <div class="box-header with-border">
+            <h3 class="box-title">Users</h3>
+            <div class="box-tools pull-right">
+            <!-- Buttons, labels, and many other things can be placed here! -->
+            <!-- Here is a label for example -->
+            <span class="label label-primary">Label</span>
+            </div>
+            <!-- /.box-tools -->
+        </div>
+        <!-- /.box-header -->
+    <div class="box-body">
+        <table class="table table-striped nowrap" id="users-table">
             <thead>
                 <tr>
                     <th>Id</th>
@@ -22,17 +36,23 @@
                 </tr>
             </thead>
         </table>
+    </div>
+  </div>
+  <!-- /.box -->
 
 @stop
 
 @section('js')
 <script src='https://cdn.datatables.net/rowreorder/1.2.5/js/dataTables.rowReorder.min.js'></script>
 <script src='https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js'></script>
+
 <script>
         $(function() {
             $('#users-table').DataTable({
                 processing: true,
                 serverSide: true,
+                responsive: true,
+                bAutoWidth: false,
                 ajax: '{!! route('datatables.data') !!}',
                 columns: [
                     { data: 'id', name: 'id' },
@@ -47,10 +67,8 @@
                 "data": null,
                 // "defaultContent": "<button class='btn btn-xs btn-primary'>Edit</button>"
                 "render": function ( data, type, row ) {
-
-                           return `<a href="sdfsdf${data['id']}" class="yourClass">Edit</a>`;
-
-                    }
+                             return `<a href="users/${data['id']}" class="yourClass">Edit</a>`;
+                          }
             } ]
             });
         });

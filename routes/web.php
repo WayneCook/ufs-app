@@ -15,18 +15,18 @@ Route::get('/', function () {
 return view('home');
 });
 
-// Route::get('admin/dashboard', function () {
-//     $bread = ['Admin', 'Dashboard'];
-//     return view('admin/dashboard', ['bread' => $bread]);
-// });
 
-Route::get('admin/messages', function () {
-    $bread = ['Admin', 'Messages'];
-    return view('admin/messages', ['bread' => $bread]);
-});
 
-Route::get('admin', 'Admin\DashboardController@index')->name('dashboard');
+Route::get('/datatable','DatatablesController@getIndex');
+Route::get('/anyData','DatatablesController@anyData')->name('datatables.data');
+
+// Admin routes
+Route::get('admin/dashboard', 'Admin\DashboardController@index')->name('dashboard');
 Route::get('admin/messages', 'Admin\MessagesController@index')->name('messages');
+// Route::get('admin/users', 'Admin\UsersController@index');
+
+Route::resource('admin/users', 'Admin\UsersController');
+
 
 Auth::routes();
 
