@@ -15,13 +15,18 @@ Route::get('/', function () {
 return view('home');
 });
 
-Route::get('admin/dashboard', function () {
-    return view('admin/dashboard');
-});
+// Route::get('admin/dashboard', function () {
+//     $bread = ['Admin', 'Dashboard'];
+//     return view('admin/dashboard', ['bread' => $bread]);
+// });
 
 Route::get('admin/messages', function () {
-    return view('admin/messages');
+    $bread = ['Admin', 'Messages'];
+    return view('admin/messages', ['bread' => $bread]);
 });
+
+Route::get('admin', 'Admin\DashboardController@index')->name('dashboard');
+Route::get('admin/messages', 'Admin\MessagesController@index')->name('messages');
 
 Auth::routes();
 
