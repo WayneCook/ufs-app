@@ -8,6 +8,8 @@
 
 @section('content_header')
     <h1>messages</h1>
+@stop
+@section('content')
 
 
     <table class="table table-bordered" id="users-table">
@@ -23,7 +25,7 @@
             </thead>
         </table>
 
-@stop
+@endsection
 
 @section('js')
 <script src='https://cdn.datatables.net/rowreorder/1.2.5/js/dataTables.rowReorder.min.js'></script>

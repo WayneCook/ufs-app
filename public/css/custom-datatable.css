@@ -1,0 +1,63 @@
+.dataTables_filter {
+    float: left!important;
+}
+
+.bottom {
+    display: flex!important;
+    flex-direction: row!important;
+    justify-content: space-between!important;
+    flex-wrap: wrap!important;
+    align-items: center!important;
+    margin-top: 30px;
+}
+
+.bottom > * {
+    margin: 0px!important;
+    padding: 0px!important;
+    margin-bottom: 0px!important;
+}
+
+.bottom div label {
+    margin: 0px!important;
+    padding: 0px!important;
+}
+
+.custom-tools {
+    display: flex!important;
+    flex-direction: row!important;
+    justify-content: space-between!important;
+    align-items: center!important;
+}
+
+div.dataTables_wrapper div.dataTables_length select {
+    width: 58px;
+    display: inline-block;
+}
+
+.box-header:before, .box-body:before, .box-footer:before {
+    content: " ";
+    display: none;
+}
+
+.box-header:after, .box-body:after, .box-footer:after {
+    display: none;
+}
+
+.form-control {
+    border-radius: 4px!important;
+}
+
+div.dataTables_wrapper div.dataTables_filter {
+    text-align: left;
+    width: 100%;
+}
+
+div.dataTables_wrapper div.dataTables_filter label {
+    width: 100%;
+}
+
+div.dataTables_wrapper div.dataTables_filter input {
+    margin-left: 0px;
+    width: 100%;
+    max-width: 300px;
+}

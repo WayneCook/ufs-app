@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Creitive\Breadcrumbs\Breadcrumbs;
+use App\User;
 
 class UsersController extends Controller
 {
@@ -17,13 +18,17 @@ class UsersController extends Controller
     {
 
         $breadcrumbs = new Breadcrumbs();
-        $breadcrumbs->addCrumb('Admin', 'admin')
+        $breadcrumbs->addCrumb('Admin', 'admin/dashboard')
         ->addCrumb('Users')
         ->setCssClasses('breadcrumb')
         ->setDivider('')
         ->render();
 
-        return view('admin/users')->with('bread', $breadcrumbs);
+        $count = User::all()->count();
+
+        // dd($count);
+
+        return view('admin/users',  ['bread' => $breadcrumbs, 'count' => $count]);
     }
 
     /**
