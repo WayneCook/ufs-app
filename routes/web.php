@@ -1,4 +1,6 @@
 <?php
+use App\User;
+use App\Role;
 
 /*
 |--------------------------------------------------------------------------
@@ -10,6 +12,18 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/roles', function () {
+
+    $user = User::find(7);
+
+    dd($user->can('create-users'));
+
+    $user->givePermissionsTo('create-tasks','edit-users');
+
+});
+
+
 
 Route::get('/', function () {
 return view('home');

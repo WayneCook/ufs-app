@@ -5,12 +5,14 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Traits\HasPermissionsTrait;
 // use Illuminate\Contracts\Auth\CanResetPassword;
 
 
 class User extends Authenticatable
 {
     use Notifiable;
+    use HasPermissionsTrait;
 
     /**
      * The attributes that are mass assignable.
@@ -18,7 +20,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'role',
+        'name', 'email', 'password'
     ];
 
     /**
@@ -38,4 +40,48 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class,'role_user');
+    }
+
+    public function isAdmin()
+    {
+        foreach ($this->roles()->get() as $role)
+        {
+            if ($role->name == 'admin')
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public function isMaster()
+    {
+        foreach ($this->roles()->get() as $role)
+        {
+            if ($role->name == 'master')
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public function isMember()
+    {
+        foreach ($this->roles()->get() as $role)
+        {
+            if ($role->name == 'member')
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }

@@ -11,10 +11,12 @@ class AdminViewComposer
         $admin = [];
 
         // Get totals
-        $admin['totals'] = DB::select("SELECT (SELECT COUNT(*) FROM users) as users,
-                                     (SELECT COUNT(*) FROM messages) as messages")[0];
+        $admin['totals'] = DB::select("SELECT (SELECT COUNT(*) FROM users) as users, (SELECT COUNT(*) FROM messages) as messages")[0];
 
-        $admin['messages'] = DB::select("SELECT * FROM messages")[0];
+
+        if(!empty($messages = DB::select("SELECT * FROM messages"))){
+            $admin['messages'] = $messages[0];
+        }
 
         return $view->with('admin', $admin);
 
