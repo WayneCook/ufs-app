@@ -1,4 +1,3 @@
-
 @extends('adminlte::page')
 
 @section('css')
@@ -16,19 +15,17 @@
 @stop
 
 @section('content')
-
     <div class="row">
         <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="info-box">
-            <span class="info-box-icon bg-yellow"><i class="ion ion-ios-person"></i></span>
-
-            <div class="info-box-content">
-              <span class="info-box-text">Total Users</span>
-            <span class="info-box-number">{{ $admin['totals']->users }}</span>
+            <div class="info-box">
+                <span class="info-box-icon bg-yellow"><i class="ion ion-ios-person"></i></span>
+                <div class="info-box-content">
+                    <span class="info-box-text">Total Users</span>
+                    <span class="info-box-number">{{ $admin['totals']->users }}</span>
+                </div>
+                <!-- /.info-box-content -->
             </div>
-            <!-- /.info-box-content -->
-          </div>
-          <!-- /.info-box -->
+            <!-- /.info-box -->
         </div>
         <!-- /.col -->
     </div>
@@ -36,46 +33,35 @@
     <div class="box box-warning">
         <div class="box-header with-border custom-tools">
             <h3 class="box-title">User Management</h3>
-
             <div>
                 <div class="btn-group">
                     <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Action <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-right">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">Separated link</a></li>
+                        <li><a href="{{ url('admin/users/create') }}">Create new user</a></li>
                     </ul>
                 </div>
-
-            {{-- <span class="label label-primary">datatable</span> --}}
             </div>
             <!-- /.box-tools -->
         </div>
         <!-- /.box-header -->
 
-
-            @include('admin.users.flash-message')
-
-
-                    <div class="box-body">
-        <table class="table table-striped nowrap" id="users-table">
-            <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Created At</th>
-                    <th>Updated At</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-        </table>
+        <div class="box-body">
+            <table class="table table-striped nowrap" id="users-table">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Created At</th>
+                        <th>Updated At</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
     </div>
-  </div>
   <!-- /.box -->
 
   @stop

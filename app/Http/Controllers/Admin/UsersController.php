@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Creitive\Breadcrumbs\Breadcrumbs;
+use Illuminate\Support\Facades\Hash;
 use App\User;
 use App\Role;
 
@@ -42,7 +43,16 @@ class UsersController extends Controller
      */
     public function create()
     {
-        //
+
+        $breadcrumbs = new Breadcrumbs();
+        $breadcrumbs->addCrumb('Admin', 'admin/dashboard')
+        ->addCrumb('Users', 'users')
+        ->addCrumb('Create')
+        ->setCssClasses('breadcrumb')
+        ->setDivider('')
+        ->render();
+
+        return view('admin.users.create', ['bread' => $breadcrumbs]);
     }
 
     /**
@@ -53,7 +63,34 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $data = $request->all();
+
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:8|confirmed',
+        ]);
+
+
+        $user = User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+            ]);
+
+        $role = Role::where('slug','member')->first();
+
+        $user->roles()->attach($role);
+
+        $notification = array(
+            'message' => 'User created successfully!',
+            'alert-type' => 'success'
+        );
+        return redirect('admin/users')->with($notification);
+
+
+
     }
 
     /**
@@ -101,6 +138,13 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+        $validatedData = $request->validate([
+            'name' => 'bail|required|max:25|min:3',
+            'email' => 'bail|required|email|max:50|min:5',
+            'role' => 'bail|required',
+        ]);
+
         $data = $request->all();
         // Get and update user data
         $user = User::with('roles')->find($id);
@@ -110,8 +154,6 @@ class UsersController extends Controller
         // Set user role
         $role = Role::find($data['role']);
         $user->roles()->attach($role);
-        // Save updated user data
-
         $user->save();
         // Generate toast notification
         $notification = array(
@@ -129,6 +171,16 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        //
+
+        $user = User::findOrfail($id);
+
+        $user->delete();
+
+        $notification = array(
+            'message' => 'User deleted successfully!',
+            'alert-type' => 'success'
+        );
+        return redirect('admin/users')->with($notification);
+
     }
 }
