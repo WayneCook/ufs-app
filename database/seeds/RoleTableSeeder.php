@@ -18,14 +18,20 @@ class RoleTableSeeder extends Seeder
 
         $dev_role = new Role();
         $dev_role->slug = 'owner';
-        $dev_role->name = 'owner';
+        $dev_role->name = 'Owner';
         $dev_role->save();
         $dev_role->permissions()->attach($owner_permission);
 
-        $manager_role = new Role();
-        $manager_role->slug = 'admin';
-        $manager_role->name = 'Administrator';
-        $manager_role->save();
-        $manager_role->permissions()->attach($admin_permission);
+        $admin_role = new Role();
+        $admin_role->slug = 'admin';
+        $admin_role->name = 'Administrator';
+        $admin_role->save();
+        $admin_role->permissions()->attach($admin_permission);
+
+        $member_role = new Role();
+        $member_role->slug = 'member';
+        $member_role->name = 'Member';
+        $member_role->save();
+
     }
 }

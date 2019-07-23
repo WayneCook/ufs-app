@@ -6,9 +6,13 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Creitive\Breadcrumbs\Breadcrumbs;
 use App\User;
+use App\Role;
 
 class UsersController extends Controller
 {
+
+    protected $redirectTo = 'admin/users';
+
     /**
      * Display a listing of the resource.
      *
@@ -28,7 +32,7 @@ class UsersController extends Controller
 
         // dd($count);
 
-        return view('admin/users',  ['bread' => $breadcrumbs, 'count' => $count]);
+        return view('admin/users/show',  ['bread' => $breadcrumbs, 'count' => $count]);
     }
 
     /**
@@ -60,7 +64,21 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        dd('User id: '.$id);
+
+        $user = User::findOrFail($id);
+
+        $roles = Role::where('slug', '!=', 'owner')->get();
+
+        $breadcrumbs = new Breadcrumbs();
+        $breadcrumbs->addCrumb('Admin', 'admin')
+        ->addCrumb('Users', 'users')
+        ->addCrumb('Edit')
+        ->setCssClasses('breadcrumb')
+        ->setDivider('')
+        ->render();
+
+        return view('admin.users.edit',['user' => $user, 'bread' => $breadcrumbs, 'roles' => $roles]);
+
     }
 
     /**
@@ -83,7 +101,24 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->all();
+        // Get and update user data
+        $user = User::with('roles')->find($id);
+        $user->fill($data);
+        // Remove user roles
+        $user->roles()->sync([]);
+        // Set user role
+        $role = Role::find($data['role']);
+        $user->roles()->attach($role);
+        // Save updated user data
+
+        $user->save();
+        // Generate toast notification
+        $notification = array(
+            'message' => 'User updated successfully!',
+            'alert-type' => 'success'
+        );
+        return redirect('admin/users')->with($notification);
     }
 
     /**

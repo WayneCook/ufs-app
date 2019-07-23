@@ -36,6 +36,7 @@
     <div class="box box-warning">
         <div class="box-header with-border custom-tools">
             <h3 class="box-title">User Management</h3>
+
             <div>
                 <div class="btn-group">
                     <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -55,7 +56,12 @@
             <!-- /.box-tools -->
         </div>
         <!-- /.box-header -->
-    <div class="box-body">
+
+
+            @include('admin.users.flash-message')
+
+
+                    <div class="box-body">
         <table class="table table-striped nowrap" id="users-table">
             <thead>
                 <tr>
@@ -80,47 +86,38 @@
 
 <script>
 
-
-
-
-// $( document ).ready(function() {
-//     console.log( "ready!" );
-// });
-
-        $(function() {
-            $('#users-table').DataTable({
-                processing: true,
-                serverSide: true,
-                responsive: true,
-                bAutoWidth: false,
-                dom: '<"top"f>rt<"bottom"lip><"clear">',
-                ajax: '{!! route('datatables.data') !!}',
-                columns: [
-                    { data: 'id', name: 'id' },
-                    { data: 'name', name: 'name' },
-                    { data: 'email', name: 'email' },
-                    { data: 'created_at', name: 'created_at' },
-                    { data: 'updated_at', name: 'updated_at' },
-                    { data: null, orderable: false, searchable: false }
-                ],
-                "columnDefs": [ {
-                "targets": -1,
-                "data": null,
-                // "defaultContent": "<button class='btn btn-xs btn-primary'>Edit</button>"
-                "render": function ( data, type, row ) {
-                            //  return `<a href="users/${data['id']}" class="yourClass">Edit</a>`;
-                             return '<a href="users/"' + data['id'] + ' class="yourClass">Edit</a>';
-                          }
-                }],
-                language: {
-                    search: '', searchPlaceholder: "Search...",
-                    lengthMenu: "Display _MENU_ records per page",
-                    zeroRecords: "Nothing found - sorry",
-                    info: "Showing page _PAGE_ of _PAGES_",
-                    infoEmpty: "No records available",
-                    infoFiltered: "(filtered from _MAX_ total records)"
+$(function() {
+    $('#users-table').DataTable({
+        processing: true,
+        serverSide: true,
+        responsive: true,
+        bAutoWidth: false,
+        dom: '<"top"f>rt<"bottom"lip><"clear">',
+        ajax: '{!! route('datatables.data') !!}',
+        columns: [
+            { data: 'id', name: 'id' },
+            { data: 'name', name: 'name' },
+            { data: 'email', name: 'email' },
+            { data: 'created_at', name: 'created_at' },
+            { data: 'updated_at', name: 'updated_at' },
+            { data: null, orderable: false, searchable: false }
+        ],
+        "columnDefs": [ {
+        "targets": -1,
+        "data": null,
+        "render": function ( data, type, row ) {
+                        return '<a href=/admin/users/' + data['id'] + ' class="yourClass">Edit</a>';
+                    }
+        }],
+        language: {
+            search: '', searchPlaceholder: "Search...",
+            lengthMenu: "Display _MENU_ records per page",
+            zeroRecords: "Nothing found - sorry",
+            info: "Showing page _PAGE_ of _PAGES_",
+            infoEmpty: "No records available",
+            infoFiltered: "(filtered from _MAX_ total records)"
         }
-            });
-        });
-        </script>
+    });
+});
+</script>
 @stop

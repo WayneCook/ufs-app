@@ -1,0 +1,17 @@
+{
+    "/js/app.js": "/js/app.js",
+    "/css/app.css": "/css/app.css",
+    "/toastr/toastr.css": "/toastr/toastr.css",
+    "/toastr/CHANGELOG.md": "/toastr/CHANGELOG.md",
+    "/toastr/demo.html": "/toastr/demo.html",
+    "/toastr/gulpfile.js": "/toastr/gulpfile.js",
+    "/toastr/karma.conf.js": "/toastr/karma.conf.js",
+    "/toastr/package-lock.json": "/toastr/package-lock.json",
+    "/toastr/package.json": "/toastr/package.json",
+    "/toastr/README.md": "/toastr/README.md",
+    "/toastr/release checklist.md": "/toastr/release checklist.md",
+    "/toastr/toastr-icon.png": "/toastr/toastr-icon.png",
+    "/toastr/toastr.js": "/toastr/toastr.js",
+    "/toastr/toastr.less": "/toastr/toastr.less",
+    "/toastr/toastr.scss": "/toastr/toastr.scss"
+}

@@ -15,9 +15,14 @@ use App\Role;
 
 Route::get('/roles', function () {
 
-    $user = User::find(7);
+    $role = Role::where('slug', 'member')->get();
 
-    dd($user->can('create-users'));
+
+    $user = User::with('roles')->find(4);
+    $user->roles()->attach($role);
+
+
+    dd($user);
 
     $user->givePermissionsTo('create-tasks','edit-users');
 
@@ -37,7 +42,6 @@ Route::get('/anyData','DatatablesController@anyData')->name('datatables.data');
 // Admin routes
 Route::get('admin/dashboard', 'Admin\DashboardController@index')->name('dashboard');
 Route::get('admin/messages', 'Admin\MessagesController@index')->name('messages');
-// Route::get('admin/users', 'Admin\UsersController@index');
 
 Route::resource('admin/users', 'Admin\UsersController');
 
