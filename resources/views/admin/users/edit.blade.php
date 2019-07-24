@@ -2,7 +2,6 @@
 @extends('adminlte::page')
 
 @section('css')
-    <!-- Responive datatable -->
     <link rel="stylesheet" href="{{ asset('css/custom-datatable.css') }}">
 @stop
 

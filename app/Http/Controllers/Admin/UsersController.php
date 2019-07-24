@@ -21,17 +21,14 @@ class UsersController extends Controller
      */
     public function index()
     {
-
         $breadcrumbs = new Breadcrumbs();
-        $breadcrumbs->addCrumb('Admin', 'admin/dashboard')
+        $breadcrumbs->addCrumb('Admin', 'admin')
         ->addCrumb('Users')
         ->setCssClasses('breadcrumb')
         ->setDivider('')
         ->render();
 
         $count = User::all()->count();
-
-        // dd($count);
 
         return view('admin/users/show',  ['bread' => $breadcrumbs, 'count' => $count]);
     }
@@ -46,7 +43,7 @@ class UsersController extends Controller
         $roles = Role::where('slug', '!=', 'owner')->get();
 
         $breadcrumbs = new Breadcrumbs();
-        $breadcrumbs->addCrumb('Admin', 'admin/dashboard')
+        $breadcrumbs->addCrumb('Admin', 'admin')
         ->addCrumb('Users', 'users')
         ->addCrumb('Create')
         ->setCssClasses('breadcrumb')
@@ -96,11 +93,8 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-
         $user = User::with('roles')->where('id', $id)->first();
-
         $roles = Role::where('slug', '!=', 'owner')->get();
-
         $breadcrumbs = new Breadcrumbs();
         $breadcrumbs->addCrumb('Admin', 'admin')
         ->addCrumb('Users', 'users')
@@ -110,7 +104,6 @@ class UsersController extends Controller
         ->render();
 
         return view('admin.users.edit',['user' => $user, 'bread' => $breadcrumbs, 'roles' => $roles]);
-
     }
 
     /**
@@ -134,8 +127,6 @@ class UsersController extends Controller
     public function update(Request $request, $id)
     {
 
-        // dd($request->all());
-
         $validatedData = $request->validate([
             'name' => 'bail|required|max:25|min:3',
             'email' => 'bail|required|email|max:50|min:5',
@@ -149,8 +140,6 @@ class UsersController extends Controller
         // Remove user roles
         $user->roles()->sync($request->role);
         // Set user role
-        // $role = Role::find($data['role']);
-        // $user->roles()->attach($role);
         $user->save();
         // Generate toast notification
         $notification = array(
@@ -168,16 +157,12 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-
         $user = User::findOrfail($id);
-
         $user->delete();
-
         $notification = array(
             'message' => 'User deleted successfully!',
             'alert-type' => 'success'
         );
         return redirect('admin/users')->with($notification);
-
     }
 }

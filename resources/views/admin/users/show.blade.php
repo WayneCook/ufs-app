@@ -90,7 +90,7 @@ $(function() {
         "targets": -1,
         "data": null,
         "render": function ( data, type, row ) {
-                        return '<a href=/admin/users/' + data['id'] + ' class="yourClass">Edit</a>';
+                        return '<a href=/admin/users/' + data['id'] + ' class="btn btn-xs btn-primary">Edit</a>';
                     }
         }],
         language: {

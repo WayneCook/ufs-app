@@ -38,12 +38,13 @@ class AppServiceProvider extends ServiceProvider
 
             $event->menu->add('MAIN NAVIGATION',[
                 'text' => 'Dashboard',
-                'url'  => 'admin/dashboard',
+                'url'  => 'admin',
                 'icon' => 'dashboard',
+                'active' => ['admin']
             ],
             [
                 'text'        => 'Messages',
-                'url'         => 'admin/messages',
+                'url'         => 'messages',
                 'icon'        => 'envelope',
                 'label'       => $admin['totals']->messages,
                 'label_color' => 'success',
@@ -51,6 +52,11 @@ class AppServiceProvider extends ServiceProvider
             [
                 'text'        => 'Users',
                 'url'         => 'admin/users',
+                'icon'        => 'user'
+            ],
+            [
+                'text'        => 'Roles',
+                'url'         => 'admin/roles',
                 'icon'        => 'user'
             ],
             'ACCOUNT SETTINGS',

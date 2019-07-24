@@ -20,8 +20,6 @@
                     <form method="post" action="{{ action('Admin\UsersController@store') }}">
 
                             {{ csrf_field() }}
-                            {{-- {{ method_field('PUT') }} --}}
-
                             <div class="form-group has-feedback {{ $errors->has('name') ? 'has-error' : '' }}">
                                 <label for="name">Full Name</label>
                                 <input type="text" name="name" class="form-control" value="{{ old('name') }}">
@@ -43,20 +41,20 @@
                             </div>
 
                             <div class="form-group {{ $errors->has('role') ? 'has-error' : '' }}">
-                                    <label>Roles</label>
-                                    <div>
-                                        @foreach ($roles as $role)
-                                            <label class="checkbox-inline">
-                                                <input name="role[]" value="{{ $role->id }}" type="checkbox">{{ $role->name }}
-                                            </label>
-                                        @endforeach
-                                        @if ($errors->has('role'))
-                                            <span class="help-block">
-                                                <small>{{ $errors->first('role') }}</small>
-                                            </span>
-                                        @endif
-                                    </div>
+                                <label>Roles</label>
+                                <div>
+                                    @foreach ($roles as $role)
+                                        <label class="checkbox-inline">
+                                            <input name="role[]" value="{{ $role->id }}" type="checkbox">{{ $role->name }}
+                                        </label>
+                                    @endforeach
+                                    @if ($errors->has('role'))
+                                        <span class="help-block">
+                                            <small>{{ $errors->first('role') }}</small>
+                                        </span>
+                                    @endif
                                 </div>
+                            </div>
 
                             <div class="form-group has-feedback {{ $errors->has('password') ? 'has-error' : '' }}">
                                 <label for="password">Password</label>

@@ -31,10 +31,14 @@ return view('home');
 
 // Admin routes
 Route::group(['middleware' => 'auth'], function () {
+    Route::get('admin', 'Admin\DashboardController@index');
+
     Route::get('admin/dashboard', 'Admin\DashboardController@index')->name('dashboard');
     Route::get('admin/messages', 'Admin\MessagesController@index')->name('messages');
     Route::resource('admin/users', 'Admin\UsersController');
     Route::get('/getUserData','DatatablesController@getUserData')->name('datatables.getUserData')->middleware('role:admin');
+    Route::resource('admin/roles', 'Admin\RolesController');
+
 });
 
 

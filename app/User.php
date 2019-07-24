@@ -6,7 +6,6 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Traits\HasPermissionsTrait;
-// use Illuminate\Contracts\Auth\CanResetPassword;
 
 
 class User extends Authenticatable
