@@ -57,17 +57,21 @@
             </div>
 
 
-            <!-- select -->
-            <div class="form-group">
-            <label>Role</label>
-            <select class="form-control" name="role">
+            <div class="form-group {{ $errors->has('role') ? 'has-error' : '' }}">
+                <label>Roles</label>
+                <div>
                     @foreach ($roles as $role)
-                        <option value="{{ $role->id }}" {{ ( $role->slug == $user->roles()->first()->slug) ? 'selected' : '' }}>{{ $role->name }}</option>
+                        <label class="checkbox-inline">
+                            <input name="role[]" value="{{ $role->id }}" type="checkbox" {{  $user->hasRole($role->slug) ? 'checked' : '' }}>{{ $role->name }}
+                        </label>
                     @endforeach
-
-                </select>
+                    @if ($errors->has('role'))
+                        <span class="help-block">
+                            <small>{{ $errors->first('role') }}</small>
+                        </span>
+                    @endif
+                </div>
             </div>
-
             <!-- /.box-body -->
         </div>
             <div class="box-footer">

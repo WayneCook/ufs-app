@@ -41,6 +41,23 @@
                                 </span>
                                 @endif
                             </div>
+
+                            <div class="form-group {{ $errors->has('role') ? 'has-error' : '' }}">
+                                    <label>Roles</label>
+                                    <div>
+                                        @foreach ($roles as $role)
+                                            <label class="checkbox-inline">
+                                                <input name="role[]" value="{{ $role->id }}" type="checkbox">{{ $role->name }}
+                                            </label>
+                                        @endforeach
+                                        @if ($errors->has('role'))
+                                            <span class="help-block">
+                                                <small>{{ $errors->first('role') }}</small>
+                                            </span>
+                                        @endif
+                                    </div>
+                                </div>
+
                             <div class="form-group has-feedback {{ $errors->has('password') ? 'has-error' : '' }}">
                                 <label for="password">Password</label>
                                 <input type="password" name="password" class="form-control" value="{{ old('password') }}">
@@ -65,7 +82,7 @@
                 <div class="box-footer">
 
                     <a href="{{ url('/admin/users') }}" class="btn btn-default">Cancel</a>
-                       <button type="submit" class="btn btn-primary pull-right">Register</button>
+                       <button type="submit" class="btn btn-primary pull-right">Create</button>
                 </form>
                 </div>
 

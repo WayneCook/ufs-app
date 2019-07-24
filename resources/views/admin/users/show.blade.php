@@ -51,7 +51,6 @@
             <table class="table table-striped nowrap" id="users-table">
                 <thead>
                     <tr>
-                        <th>Id</th>
                         <th>Name</th>
                         <th>Email</th>
                         <th>Created At</th>
@@ -79,9 +78,8 @@ $(function() {
         responsive: true,
         bAutoWidth: false,
         dom: '<"top"f>rt<"bottom"lip><"clear">',
-        ajax: '{!! route('datatables.data') !!}',
+        ajax: '{!! route('datatables.getUserData') !!}',
         columns: [
-            { data: 'id', name: 'id' },
             { data: 'name', name: 'name' },
             { data: 'email', name: 'email' },
             { data: 'created_at', name: 'created_at' },

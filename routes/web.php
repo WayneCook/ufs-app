@@ -15,17 +15,11 @@ use App\Role;
 
 Route::get('/roles', function () {
 
-    $role = Role::where('slug', 'member')->get();
 
-
-    $user = User::with('roles')->find(4);
-    $user->roles()->attach($role);
-
+    // $user = User::with('roles')->where('name', 'dimitri cook')->first();
+    $user = User::with('roles')->where('name', 'dimitri cook')->first();
 
     dd($user);
-
-    $user->givePermissionsTo('create-tasks','edit-users');
-
 });
 
 
@@ -35,16 +29,17 @@ return view('home');
 });
 
 
+// Admin routes
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('admin/dashboard', 'Admin\DashboardController@index')->name('dashboard');
+    Route::get('admin/messages', 'Admin\MessagesController@index')->name('messages');
+    Route::resource('admin/users', 'Admin\UsersController');
+    Route::get('/getUserData','DatatablesController@getUserData')->name('datatables.getUserData')->middleware('role:admin');
+});
+
+
 
 Route::get('/datatable','DatatablesController@getIndex');
-Route::get('/anyData','DatatablesController@anyData')->name('datatables.data');
-
-// Admin routes
-Route::get('admin/dashboard', 'Admin\DashboardController@index')->name('dashboard');
-Route::get('admin/messages', 'Admin\MessagesController@index')->name('messages');
-
-Route::resource('admin/users', 'Admin\UsersController');
-
 
 Auth::routes();
 

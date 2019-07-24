@@ -43,6 +43,7 @@ class UsersController extends Controller
      */
     public function create()
     {
+        $roles = Role::where('slug', '!=', 'owner')->get();
 
         $breadcrumbs = new Breadcrumbs();
         $breadcrumbs->addCrumb('Admin', 'admin/dashboard')
@@ -52,7 +53,7 @@ class UsersController extends Controller
         ->setDivider('')
         ->render();
 
-        return view('admin.users.create', ['bread' => $breadcrumbs]);
+        return view('admin.users.create', ['bread' => $breadcrumbs, 'roles' => $roles]);
     }
 
     /**
@@ -64,32 +65,26 @@ class UsersController extends Controller
     public function store(Request $request)
     {
 
-        $data = $request->all();
-
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8|confirmed',
+            'role' => 'required',
         ]);
 
-
         $user = User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
             ]);
 
-        $role = Role::where('slug','member')->first();
-
-        $user->roles()->attach($role);
+        $user->roles()->sync($request->role);
 
         $notification = array(
             'message' => 'User created successfully!',
             'alert-type' => 'success'
         );
         return redirect('admin/users')->with($notification);
-
-
 
     }
 
@@ -102,7 +97,7 @@ class UsersController extends Controller
     public function show($id)
     {
 
-        $user = User::findOrFail($id);
+        $user = User::with('roles')->where('id', $id)->first();
 
         $roles = Role::where('slug', '!=', 'owner')->get();
 
@@ -139,10 +134,12 @@ class UsersController extends Controller
     public function update(Request $request, $id)
     {
 
+        // dd($request->all());
+
         $validatedData = $request->validate([
             'name' => 'bail|required|max:25|min:3',
             'email' => 'bail|required|email|max:50|min:5',
-            'role' => 'bail|required',
+            'role' => 'required',
         ]);
 
         $data = $request->all();
@@ -150,10 +147,10 @@ class UsersController extends Controller
         $user = User::with('roles')->find($id);
         $user->fill($data);
         // Remove user roles
-        $user->roles()->sync([]);
+        $user->roles()->sync($request->role);
         // Set user role
-        $role = Role::find($data['role']);
-        $user->roles()->attach($role);
+        // $role = Role::find($data['role']);
+        // $user->roles()->attach($role);
         $user->save();
         // Generate toast notification
         $notification = array(
