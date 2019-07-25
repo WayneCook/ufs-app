@@ -99,11 +99,13 @@ class UsersController extends Controller
 
         $user = User::with('roles')->where('id', $id)->first();
 
+        // Check if super-admin
         if($user->hasRole('super-admin') && !Auth::user()->hasRole('super-admin')){
            return redirect()->back();
         }
 
         $roles = Role::where('slug', '!=', 'super-admin')->get();
+
         $breadcrumbs = new Breadcrumbs();
         $breadcrumbs->addCrumb('Admin', 'admin')
         ->addCrumb('Users', 'users')

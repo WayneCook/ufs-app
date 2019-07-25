@@ -19,7 +19,7 @@ Route::get('/roles', function () {
 
     $user = User::where('name', 'Wayne Cook')->get()->first();
 
-    dd(Auth::user()->hasRole('super-admin'));
+    dd(Auth::user()->roles());
 
 
 });

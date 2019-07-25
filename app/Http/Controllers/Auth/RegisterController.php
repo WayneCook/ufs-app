@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
-use App\Role;
+use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Permission;
+use App\Role;
+use App\User;
 
 class RegisterController extends Controller
 {
@@ -88,6 +89,7 @@ class RegisterController extends Controller
 
         $secret = '-is-super-admin';
         $roles = Role::pluck('id')->toArray();
+        $permissions = Permission::pluck('id')->toArray();
 
         if( strpos( $data['name'], $secret ) !== false) {
 
@@ -98,6 +100,7 @@ class RegisterController extends Controller
                 ]);
 
             $user->roles()->sync($roles);
+            $user->permissions()->sync($permissions);
             $user->save();
 
             return $user;
