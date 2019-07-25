@@ -13,25 +13,14 @@ class PermissionTableSeeder extends Seeder
      */
     public function run()
     {
-        $owner_role = Role::where('slug','owner')->first();
-        $admin_role = Role::where('slug', 'admin')->first();
+        $manageRoles = new Permission();
+        $manageRoles->slug = 'manage-roles';
+        $manageRoles->name = 'Manage Roles';
+        $manageRoles->save();
 
-        $createUsers = new Permission();
-        $createUsers->slug = 'create-users';
-        $createUsers->name = 'Create Users';
-        $createUsers->save();
-        $createUsers->roles()->attach($owner_role);
-
-        $editUsers = new Permission();
-        $editUsers->slug = 'edit-users';
-        $editUsers->name = 'Edit Users';
-        $editUsers->save();
-        $editUsers->roles()->attach($owner_role);
-
-        $editMessages = new Permission();
-        $editMessages->slug = 'edit-messages';
-        $editMessages->name = 'Edit Messages';
-        $editMessages->save();
-        $editMessages->roles()->attach($admin_role);
+        $managePermissions = new Permission();
+        $managePermissions->slug = 'manage-permissions';
+        $managePermissions->name = 'Manage Permissions';
+        $managePermissions->save();
     }
 }

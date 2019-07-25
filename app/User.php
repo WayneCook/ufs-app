@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Notifications\Notifiable;
+
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Traits\HasPermissionsTrait;
@@ -12,6 +13,7 @@ class User extends Authenticatable
 {
     use Notifiable;
     use HasPermissionsTrait;
+
 
     /**
      * The attributes that are mass assignable.
@@ -45,42 +47,11 @@ class User extends Authenticatable
         return $this->belongsToMany(Role::class,'role_user');
     }
 
-    public function isAdmin()
+    public function getAllUsers()
     {
-        foreach ($this->roles()->get() as $role)
-        {
-            if ($role->name == 'admin')
-            {
-                return true;
-            }
-        }
-
-        return false;
+        return User::whereDoesntHave('roles', function ($query) {
+            $query->where('slug', '=', 'super-admin');
+        })->get();
     }
 
-    public function isMaster()
-    {
-        foreach ($this->roles()->get() as $role)
-        {
-            if ($role->name == 'master')
-            {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    public function isMember()
-    {
-        foreach ($this->roles()->get() as $role)
-        {
-            if ($role->name == 'member')
-            {
-                return true;
-            }
-        }
-
-        return false;
-    }
 }

@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Creitive\Breadcrumbs\Breadcrumbs;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\Request;
 use App\User;
 use App\Role;
 
@@ -28,7 +29,9 @@ class UsersController extends Controller
         ->setDivider('')
         ->render();
 
-        $count = User::all()->count();
+        $count = User::whereDoesntHave('roles', function ($query) {
+            $query->where('slug', '=', 'super-admin');
+        })->get()->count();
 
         return view('admin/users/show',  ['bread' => $breadcrumbs, 'count' => $count]);
     }
@@ -40,7 +43,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-        $roles = Role::where('slug', '!=', 'owner')->get();
+        $roles = Role::where('slug', '!=', 'super-admin')->get();
 
         $breadcrumbs = new Breadcrumbs();
         $breadcrumbs->addCrumb('Admin', 'admin')
@@ -93,8 +96,14 @@ class UsersController extends Controller
      */
     public function show($id)
     {
+
         $user = User::with('roles')->where('id', $id)->first();
-        $roles = Role::where('slug', '!=', 'owner')->get();
+
+        if($user->hasRole('super-admin') && !Auth::user()->hasRole('super-admin')){
+           return redirect()->back();
+        }
+
+        $roles = Role::where('slug', '!=', 'super-admin')->get();
         $breadcrumbs = new Breadcrumbs();
         $breadcrumbs->addCrumb('Admin', 'admin')
         ->addCrumb('Users', 'users')

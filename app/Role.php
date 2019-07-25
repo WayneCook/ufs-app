@@ -3,6 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\User;
+use App\Permission;
 
 
 class Role extends Model
@@ -24,7 +26,7 @@ class Role extends Model
      */
     public function users()
     {
-        return $this->belongsToMany('App\User');
+        return $this->belongsToMany(User::class,'permissions_users');
 
     }
 
@@ -32,11 +34,18 @@ class Role extends Model
         return $this->belongsToMany(Permission::class,'permissions_roles');
      }
 
-     public function hasPermission($slug) {
+    public function hasPermission($slug) {
 
-           return $this->permissions->contains('slug', $slug );
+        return $this->permissions->contains('slug', $slug );
 
-     }
+    }
+
+    public function getAllRoles() {
+
+        return $this->permissions->contains('slug', $slug );
+
+    }
+
 
 
 

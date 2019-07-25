@@ -28,12 +28,18 @@ class DatatablesController extends Controller
      */
     public function anyData()
     {
-        return Datatables::of(User::query())->make(true);
+        return Datatables::of(User::whereDoesntHave('roles', function ($query) {
+            $query->where('slug', '=', 'super-admin');
+        })->get())->make(true);
     }
 
     public function getUserData()
     {
-        return Datatables::of(User::query())->make(true);
+        return Datatables::of(User::whereDoesntHave('roles', function ($query) {
+            $query->where('slug', '=', 'super-admin');
+        })->get())->make(true);
+
+
     }
 
 

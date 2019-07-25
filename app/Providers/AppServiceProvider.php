@@ -28,7 +28,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot(Dispatcher $events)
     {
 
-        $admin = [];
 
         // Get totals
         $admin['totals'] = DB::select("SELECT (SELECT COUNT(*) FROM users) as users,
@@ -57,7 +56,15 @@ class AppServiceProvider extends ServiceProvider
             [
                 'text'        => 'Roles',
                 'url'         => 'admin/roles',
-                'icon'        => 'user'
+                'icon'        => 'user',
+                'can'         => 'manage-roles'
+            ],
+            [
+                'text'        => 'Permissions',
+                'url'         => 'admin/permissions',
+                'icon'        => 'user',
+                'can'         => 'manage-permissions'
+
             ],
             'ACCOUNT SETTINGS',
             [

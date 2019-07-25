@@ -1,14 +1,13 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+
 use Creitive\Breadcrumbs\Breadcrumbs;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Permission;
-use App\Role;
 
-
-class RolesController extends Controller
+class PermissionsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,18 +16,16 @@ class RolesController extends Controller
      */
     public function index()
     {
-
-        $roles = Role::all();
+        $permissions = Permission::all();
 
         $breadcrumbs = new Breadcrumbs();
         $breadcrumbs->addCrumb('Admin', 'admin')
-        ->addCrumb('Roles')
+        ->addCrumb('Permissions')
         ->setCssClasses('breadcrumb')
         ->setDivider('')
         ->render();
 
-        return view('admin/roles/index', ['roles' => $roles, 'bread' => $breadcrumbs]);
-
+        return view('admin/permissions/index',['permissions' => $permissions, 'bread' => $breadcrumbs]);
 
     }
 
@@ -40,18 +37,15 @@ class RolesController extends Controller
     public function create()
     {
 
-        $permissions = Permission::all();
-
         $breadcrumbs = new Breadcrumbs();
         $breadcrumbs->addCrumb('Admin', 'admin')
-        ->addCrumb('Roles', 'roles')
+        ->addCrumb('Permissions', 'permissions')
         ->addCrumb('Create')
         ->setCssClasses('breadcrumb')
         ->setDivider('')
         ->render();
 
-
-        return view('admin/roles/create', ['bread' => $breadcrumbs, 'permissions' => $permissions]);
+        return view('admin/permissions/create', ['bread' => $breadcrumbs]);
     }
 
     /**
@@ -67,19 +61,19 @@ class RolesController extends Controller
             'name' => 'required|string|max:25|min:3',
         ]);
 
-        $role = Role::create([
+        $role = Permission::create([
             'name' => $request->name,
             'slug' => str_slug($request->name),
             ]);
 
-        $role->permissions()->sync($request->permission);
-
-
         $notification = array(
-            'message' => 'Role created successfully!',
+            'message' => 'Permission created successfully!',
             'alert-type' => 'success'
         );
-        return redirect('admin/roles')->with($notification);
+        return redirect('admin/permissions')->with($notification);
+
+
+
 
     }
 
@@ -103,19 +97,16 @@ class RolesController extends Controller
     public function edit($id)
     {
 
-        $role = Role::with('permissions')->find($id);
-
-        $permissions = Permission::all();
-
+        $permission = Permission::findOrFail($id);
         $breadcrumbs = new Breadcrumbs();
         $breadcrumbs->addCrumb('Admin', 'admin')
-        ->addCrumb('Roles', 'roles')
+        ->addCrumb('Permissions', 'permissions')
         ->addCrumb('Edit')
         ->setCssClasses('breadcrumb')
         ->setDivider('')
         ->render();
 
-        return view('admin.roles.edit',['role' => $role, 'bread' => $breadcrumbs, 'permissions' => $permissions]);
+        return view('admin/permissions/edit', ['permission' => $permission, 'bread' => $breadcrumbs]);
 
     }
 
@@ -129,24 +120,22 @@ class RolesController extends Controller
     public function update(Request $request, $id)
     {
 
+
         $validatedData = $request->validate([
             'name' => 'required|string|max:25|min:3',
         ]);
 
-        $role = Role::with('permissions')->find($id);
-
+        $role = Permission::findOrFail($id);
         $role->name = $request->name;
         $role->slug = str_slug($request->name);
-
-        $role->permissions()->sync($request->permission);
-
         $role->save();
 
         $notification = array(
             'message' => 'Role updated successfully!',
             'alert-type' => 'success'
         );
-        return redirect('admin/roles')->with($notification);
+        return redirect('admin/permissions')->with($notification);
+
     }
 
     /**
@@ -157,16 +146,14 @@ class RolesController extends Controller
      */
     public function destroy($id)
     {
+        $permission = Permission::findOrFail($id);
+        $permission->delete();
 
-        $role = Role::findOrFail($id);
-
-        $role->delete();
-
-            $notification = array(
-                'message' => 'Role deleted successfully!',
-                'alert-type' => 'success'
-            );
-            return redirect('admin/roles')->with($notification);
+        $notification = array(
+            'message' => 'Role deleted successfully!',
+            'alert-type' => 'success'
+        );
+        return redirect('admin/permissions')->with($notification);
 
     }
 }

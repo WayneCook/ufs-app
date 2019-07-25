@@ -13,20 +13,20 @@ class RoleTableSeeder extends Seeder
      */
     public function run()
     {
-        $owner_permission = Permission::where('slug','edit-users')->first();
-        $admin_permission = Permission::where('slug', 'edit-messages')->first();
+        // $owner_permission = Permission::where('slug','edit-users')->first();
+        // $admin_permission = Permission::where('slug', 'edit-messages')->first();
 
         $dev_role = new Role();
-        $dev_role->slug = 'owner';
-        $dev_role->name = 'Owner';
+        $dev_role->slug = 'super-admin';
+        $dev_role->name = 'Super Admin';
         $dev_role->save();
-        $dev_role->permissions()->attach($owner_permission);
+        // $dev_role->permissions()->attach($owner_permission);
 
         $admin_role = new Role();
         $admin_role->slug = 'admin';
-        $admin_role->name = 'Administrator';
+        $admin_role->name = 'Admin';
         $admin_role->save();
-        $admin_role->permissions()->attach($admin_permission);
+        // $admin_role->permissions()->attach($admin_permission);
 
         $member_role = new Role();
         $member_role->slug = 'member';

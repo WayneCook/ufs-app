@@ -1,6 +1,7 @@
 <?php
 use App\User;
 use App\Role;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,10 +17,11 @@ use App\Role;
 Route::get('/roles', function () {
 
 
-    // $user = User::with('roles')->where('name', 'dimitri cook')->first();
-    $user = User::with('roles')->where('name', 'dimitri cook')->first();
+    $user = User::where('name', 'Wayne Cook')->get()->first();
 
-    dd($user);
+    dd(Auth::user()->hasRole('super-admin'));
+
+
 });
 
 
@@ -36,9 +38,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('admin/dashboard', 'Admin\DashboardController@index')->name('dashboard');
     Route::get('admin/messages', 'Admin\MessagesController@index')->name('messages');
     Route::resource('admin/users', 'Admin\UsersController');
-    Route::get('/getUserData','DatatablesController@getUserData')->name('datatables.getUserData')->middleware('role:admin');
-    Route::resource('admin/roles', 'Admin\RolesController');
-
+    Route::get('/getUserData','DatatablesController@getUserData')->name('datatables.getUserData');
+    Route::resource('admin/roles', 'Admin\RolesController')->middleware('can:manage-roles');
+    Route::resource('admin/permissions', 'Admin\PermissionsController');
 });
 
 

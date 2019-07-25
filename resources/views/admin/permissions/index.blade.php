@@ -7,7 +7,7 @@
 
 @section('content_header')
     <h1>
-        Roles
+        Permissions
     </h1>
 @stop
 
@@ -17,7 +17,7 @@
             <div class="col-xs-12">
               <div class="box box-warning">
                 <div class="box-header">
-                  <h3 class="box-title">Active Roles</h3>
+                  <h3 class="box-title">Active Permissions</h3>
 
                   <div class="box-tools">
 
@@ -27,7 +27,7 @@
                             <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
-                            <li><a href="{{ action('Admin\RolesController@create') }}">Create new role</a></li>
+                            <li><a href="{{ action('Admin\PermissionsController@create') }}">Create new permission</a></li>
 
                         </ul>
                     </div>
@@ -42,13 +42,13 @@
                       <th>Name</th>
                       <th>Actions</th>
                     </tr>
-                    @foreach ($roles as $role)
+                    @foreach ($permissions as $permission)
                         <tr>
-                            <td>{{ $role->id }}</td>
-                            <td>{{ $role->slug }}</td>
-                            <td>{{ $role->name }}</td>
+                            <td>{{ $permission->id }}</td>
+                            <td>{{ $permission->slug }}</td>
+                            <td>{{ $permission->name }}</td>
                             <td>
-                                <a class="btn btn-xs btn-default" href="{{ action('Admin\RolesController@edit', ['id' => $role->id]) }}">Edit</a>
+                                <a class="btn btn-xs btn-default" href="{{ action('Admin\PermissionsController@edit', ['id' => $permission->id]) }}">Edit</a>
                             </td>
                         </tr>
                     @endforeach
