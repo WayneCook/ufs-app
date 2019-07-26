@@ -2,11 +2,9 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Facades\DB;
-
-use Illuminate\Contracts\Events\Dispatcher;
 use JeroenNoten\LaravelAdminLte\Events\BuildingMenu;
+use Illuminate\Contracts\Events\Dispatcher;
+use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -28,12 +26,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(Dispatcher $events)
     {
 
-
-        // Get totals
-        $admin['totals'] = DB::select("SELECT (SELECT COUNT(*) FROM users) as users,
-                                     (SELECT COUNT(*) FROM messages) as messages")[0];
-
-        $events->listen(BuildingMenu::class, function (BuildingMenu $event) use ($admin) {
+        $events->listen(BuildingMenu::class, function (BuildingMenu $event) {
 
             $event->menu->add('MAIN NAVIGATION',[
                 'text' => 'Dashboard',
@@ -43,9 +36,8 @@ class AppServiceProvider extends ServiceProvider
             ],
             [
                 'text'        => 'Messages',
-                'url'         => 'messages',
+                'url'         => 'admin/messages',
                 'icon'        => 'envelope',
-                'label'       => $admin['totals']->messages,
                 'label_color' => 'success',
             ],
             [
@@ -69,7 +61,7 @@ class AppServiceProvider extends ServiceProvider
             'ACCOUNT SETTINGS',
             [
                 'text' => 'Profile',
-                'url'  => 'admin/settings',
+                'url'  => 'admin/profile',
                 'icon' => 'user',
             ],
             [

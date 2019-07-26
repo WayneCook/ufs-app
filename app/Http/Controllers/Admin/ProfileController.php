@@ -2,15 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Creitive\Breadcrumbs\Breadcrumbs;
-use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
-
-class DashboardController extends Controller
+class ProfileController extends Controller
 {
-
     /**
      * Display a listing of the resource.
      *
@@ -18,16 +15,14 @@ class DashboardController extends Controller
      */
     public function index()
     {
-
         $bread = new Breadcrumbs();
         $bread->addCrumb('Admin', 'admin')
-        ->addCrumb('Dashboard')
+        ->addCrumb('Profile')
         ->setCssClasses('breadcrumb')
         ->setDivider('')
         ->render();
 
-
-        return view('admin/dashboard')->with('bread', $bread);
+        return view('admin.profile.show', ['bread' => $bread]);
     }
 
     /**
@@ -59,7 +54,7 @@ class DashboardController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**

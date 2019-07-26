@@ -1,16 +1,15 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 use Creitive\Breadcrumbs\Breadcrumbs;
-
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use App\Message;
+use Helper;
 
 class MessagesController extends Controller
 {
-
-
     /**
      * Display a listing of the resource.
      *
@@ -18,7 +17,6 @@ class MessagesController extends Controller
      */
     public function index()
     {
-
         $breadcrumbs = new Breadcrumbs();
         $breadcrumbs->addCrumb('Admin', 'admin')
         ->addCrumb('Messages')
@@ -26,7 +24,7 @@ class MessagesController extends Controller
         ->setDivider('')
         ->render();
 
-        return view('admin/messages', ['bread' => $breadcrumbs]);
+        return view('admin/messages/index', ['bread' => $breadcrumbs]);
     }
 
     /**
@@ -58,7 +56,20 @@ class MessagesController extends Controller
      */
     public function show($id)
     {
-        //
+        $message = Message::findOrFail($id);
+        $message->read = true;
+        $message->save();
+
+        $breadcrumbs = new Breadcrumbs();
+        $breadcrumbs->addCrumb('Admin', 'admin')
+        ->addCrumb('Messages', 'messages')
+        ->addCrumb('View')
+        ->setCssClasses('breadcrumb')
+        ->setDivider('')
+        ->render();
+
+
+        return view('admin/messages/show', ['message' => $message, 'bread' => $breadcrumbs]);
     }
 
     /**
@@ -92,6 +103,32 @@ class MessagesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $message = Message::findOrFail($id);
+        $message->delete();
+
+        $notification = array(
+            'message' => 'Message deleted successfully!',
+            'alert-type' => 'success'
+        );
+        return redirect('admin/messages')->with($notification);
     }
+
+       /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function markAllRead()
+    {
+        $affected = DB::table('messages')->where('read', '=', 0)->update(array('read' => 1));
+
+        $notification = array(
+            'message' => 'Messages updated successfully!',
+            'alert-type' => 'success'
+        );
+        return redirect('admin/messages')->with($notification);
+    }
+
 }

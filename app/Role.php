@@ -46,6 +46,11 @@ class Role extends Model
 
     }
 
+    public function scopeisNotSuperAdmin($query)
+    {
+        return $query->where('slug', '!=', 'super-admin' );
+    }
+
 
 
 

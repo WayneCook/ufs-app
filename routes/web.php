@@ -17,30 +17,29 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/roles', function () {
 
 
-    $user = User::where('name', 'Wayne Cook')->get()->first();
+    $users = Role::with('users')->get();
 
-    dd(Auth::user()->roles());
-
+    dd($users);
 
 });
 
 
+Route::get('/', 'HomeController@index')->name('home');
 
-Route::get('/', function () {
-return view('home');
-});
 
 
 // Admin routes
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::get('admin', 'Admin\DashboardController@index');
-
-    Route::get('admin/dashboard', 'Admin\DashboardController@index')->name('dashboard');
     Route::get('admin/messages', 'Admin\MessagesController@index')->name('messages');
+    Route::get('admin/messages/markAllRead', 'Admin\MessagesController@markAllRead');
     Route::resource('admin/users', 'Admin\UsersController');
+    Route::resource('admin/profile', 'Admin\ProfileController');
     Route::get('/getUserData','DatatablesController@getUserData')->name('datatables.getUserData');
+    Route::get('/getMessageData','DatatablesController@getMessageData')->name('datatables.getMessageData');
     Route::resource('admin/roles', 'Admin\RolesController')->middleware('can:manage-roles');
     Route::resource('admin/permissions', 'Admin\PermissionsController');
+    Route::resource('admin/messages', 'Admin\MessagesController');
 });
 
 
@@ -49,5 +48,4 @@ Route::get('/datatable','DatatablesController@getIndex');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
 

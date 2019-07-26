@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
+use Illuminate\Http\Request;
+use App\Message;
 use App\User;
 
 
@@ -39,6 +40,11 @@ class DatatablesController extends Controller
             $query->where('slug', '=', 'super-admin');
         })->get())->make(true);
 
+    }
+
+    public function getMessageData()
+    {
+        return Datatables::of(Message::all())->make(true);
 
     }
 

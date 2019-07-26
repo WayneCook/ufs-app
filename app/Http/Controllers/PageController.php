@@ -1,16 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
+use App\Page;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use Creitive\Breadcrumbs\Breadcrumbs;
-use Illuminate\Support\Facades\DB;
 
-
-class DashboardController extends Controller
+class PageController extends Controller
 {
-
     /**
      * Display a listing of the resource.
      *
@@ -19,15 +15,15 @@ class DashboardController extends Controller
     public function index()
     {
 
-        $bread = new Breadcrumbs();
-        $bread->addCrumb('Admin', 'admin')
-        ->addCrumb('Dashboard')
-        ->setCssClasses('breadcrumb')
-        ->setDivider('')
-        ->render();
 
 
-        return view('admin/dashboard')->with('bread', $bread);
+        $page = Page::where('slug', 'home')->first();
+        views($page)->record();
+
+        dd(views($page)->count());
+
+
+        return view('home');
     }
 
     /**
@@ -54,10 +50,10 @@ class DashboardController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Page  $page
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Page $page)
     {
         //
     }
@@ -65,10 +61,10 @@ class DashboardController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Page  $page
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Page $page)
     {
         //
     }
@@ -77,10 +73,10 @@ class DashboardController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Page  $page
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Page $page)
     {
         //
     }
@@ -88,10 +84,10 @@ class DashboardController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Page  $page
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Page $page)
     {
         //
     }

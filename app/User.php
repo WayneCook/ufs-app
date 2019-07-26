@@ -2,15 +2,16 @@
 
 namespace App;
 
-use Illuminate\Notifications\Notifiable;
-
-use Illuminate\Contracts\Auth\MustVerifyEmail;
+use CyrildeWit\EloquentViewable\Contracts\Viewable as ViewableContract;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use CyrildeWit\EloquentViewable\Viewable;
 use App\Traits\HasPermissionsTrait;
 
 
-class User extends Authenticatable
+class User extends Authenticatable implements ViewableContract
 {
+    use Viewable;
     use Notifiable;
     use HasPermissionsTrait;
 
@@ -47,11 +48,13 @@ class User extends Authenticatable
         return $this->belongsToMany(Role::class,'role_user');
     }
 
-    public function getAllUsers()
+
+    public function scopeIsNotSuperAdmin($query)
     {
-        return User::whereDoesntHave('roles', function ($query) {
-            $query->where('slug', '=', 'super-admin');
-        })->get();
+        return $query->whereDoesntHave('roles', function($query){
+
+            $query->where('slug', '=', 'super-admin' );
+        });
     }
 
 }

@@ -15,11 +15,12 @@ class CreateMessagesTable extends Migration
     {
         Schema::create('messages', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->timestamp('message_sent_at')->nullable();
-            $table->string('name', 25);
+            $table->timestamps();
+            $table->string('name', 25)->nullable()->default('N/A');
+            $table->string('location', 50)->nullable()->default('N/A');
             $table->text('body');
-            $table->string('email', 40);
-            $table->string('phone', 25);
+            $table->string('email', 40)->nullable()->default('N/A');
+            $table->string('phone', 25)->nullable()->default('N/A');
             $table->boolean('read')->default(false);
         });
     }

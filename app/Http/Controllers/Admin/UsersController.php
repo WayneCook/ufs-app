@@ -20,20 +20,16 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(User $users)
     {
-        $breadcrumbs = new Breadcrumbs();
-        $breadcrumbs->addCrumb('Admin', 'admin')
+        $bread = new Breadcrumbs();
+        $bread->addCrumb('Admin', 'admin')
         ->addCrumb('Users')
         ->setCssClasses('breadcrumb')
         ->setDivider('')
         ->render();
 
-        $count = User::whereDoesntHave('roles', function ($query) {
-            $query->where('slug', '=', 'super-admin');
-        })->get()->count();
-
-        return view('admin/users/show',  ['bread' => $breadcrumbs, 'count' => $count]);
+        return view('admin/users/show',  ['bread' => $bread, 'count' => $users->all()->count()]);
     }
 
     /**
@@ -41,9 +37,8 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Role $roles)
     {
-        $roles = Role::where('slug', '!=', 'super-admin')->get();
 
         $breadcrumbs = new Breadcrumbs();
         $breadcrumbs->addCrumb('Admin', 'admin')
@@ -53,7 +48,7 @@ class UsersController extends Controller
         ->setDivider('')
         ->render();
 
-        return view('admin.users.create', ['bread' => $breadcrumbs, 'roles' => $roles]);
+        return view('admin.users.create', ['bread' => $breadcrumbs, 'roles' => $roles->isNotSuperAdmin()->get()]);
     }
 
     /**
@@ -94,12 +89,10 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user)
     {
 
-        $user = User::with('roles')->where('id', $id)->first();
-
-        // Check if super-admin
+        // If super-admin
         if($user->hasRole('super-admin') && !Auth::user()->hasRole('super-admin')){
            return redirect()->back();
         }

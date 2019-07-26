@@ -74,7 +74,7 @@
             <!-- /.box-body -->
         </div>
             <div class="box-footer">
-                <a href="{{ url('/admin/users') }}" class="btn btn-default">Cancel</a>
+                <a href="{{ url()->previous() }}" class="btn btn-default">Cancel</a>
                 <button type="submit" class="btn btn-primary pull-right">Save</button>
             </div>
         </form>
