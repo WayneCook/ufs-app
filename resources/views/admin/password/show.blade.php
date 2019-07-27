@@ -13,7 +13,7 @@
 
 @section('content')
 <div class='row'>
-        <div class='col-md-3 col-sm-6 col-xs-12'>
+        <div class='col-md-6 col-sm-6 col-xs-12'>
 <div class="box box-warning">
         <div class="box-header with-border">
           <h3 class="box-title">New Password</h3>
