@@ -66,46 +66,8 @@ class AppServiceProvider extends ServiceProvider
             ],
             [
                 'text' => 'Change Password',
-                'url'  => 'admin/settings',
+                'url'  => 'admin/password/change',
                 'icon' => 'lock',
-            ],
-            [
-                'text'    => 'Multilevel',
-                'icon'    => 'share',
-                'submenu' => [
-                    [
-                        'text' => 'Level One',
-                        'url'  => '#',
-                    ],
-                    [
-                        'text'    => 'Level One',
-                        'url'     => '#',
-                        'submenu' => [
-                            [
-                                'text' => 'Level Two',
-                                'url'  => '#',
-                            ],
-                            [
-                                'text'    => 'Level Two',
-                                'url'     => '#',
-                                'submenu' => [
-                                    [
-                                        'text' => 'Level Three',
-                                        'url'  => '#',
-                                    ],
-                                    [
-                                        'text' => 'Level Three',
-                                        'url'  => '#',
-                                    ],
-                                ],
-                            ],
-                        ],
-                    ],
-                    [
-                        'text' => 'Level One',
-                        'url'  => '#',
-                    ],
-                ],
             ],
             'LABELS',
             [

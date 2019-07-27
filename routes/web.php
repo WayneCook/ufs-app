@@ -16,8 +16,7 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/roles', function () {
 
-
-    $users = Role::with('users')->get();
+    $users = auth()->user()->roles()->get();
 
     dd($users);
 
@@ -40,6 +39,9 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::resource('admin/roles', 'Admin\RolesController')->middleware('can:manage-roles');
     Route::resource('admin/permissions', 'Admin\PermissionsController');
     Route::resource('admin/messages', 'Admin\MessagesController');
+    Route::get('admin/password/change','Admin\ChangePasswordController@show');
+    Route::get('admin/password/store','Admin\ChangePasswordController@store');
+
 });
 
 

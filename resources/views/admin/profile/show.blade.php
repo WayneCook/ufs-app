@@ -13,30 +13,48 @@
 @stop
 
 @section('content')
+<div class='row'>
+    <div class='col-md-3 col-sm-6 col-xs-12'>
+        <div class="box box-warning">
+            <div class="box-body box-profile" col-6>
+                <img class="profile-user-img img-responsive img-circle" src="{{ asset('storage/images/user-default.png') }}" alt="User profile picture">
 
-<div class="box box-primary">
-        <div class="box-body box-profile">
-          <img class="profile-user-img img-responsive img-circle" src="../../dist/img/user4-128x128.jpg" alt="User profile picture">
+                <h3 class="profile-username text-center">{{ auth()->user()->name }}</h3>
 
-          <h3 class="profile-username text-center">Nina Mcintire</h3>
+                <ul class="list-group list-group-unbordered">
+                <li class="list-group-item">
+                    <b>Current Roles</b>
+                    <p class='text-muted pull-right'>
+                        @foreach (auth()->user()->roles()->get() as $role)
 
-          <p class="text-muted text-center">Software Engineer</p>
+                            @if ($loop->last)
+                                {{ $role->name }}
+                                @break
+                            @endif
 
-          <ul class="list-group list-group-unbordered">
-            <li class="list-group-item">
-              <b>Followers</b> <a class="pull-right">1,322</a>
-            </li>
-            <li class="list-group-item">
-              <b>Following</b> <a class="pull-right">543</a>
-            </li>
-            <li class="list-group-item">
-              <b>Friends</b> <a class="pull-right">13,287</a>
-            </li>
-          </ul>
+                            {{ $role->name }}
+                            <span> &#8226; </span>
+                        @endforeach
+                    </p>
 
-          <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
-        </div>
-        <!-- /.box-body -->
-      </div>
+                </li>
+                <li class="list-group-item">
+                    <b>Email</b> <p class="pull-right text-muted">{{ auth()->user()->email }}</p>
+                </li>
+                <li class="list-group-item">
+                    <b>Member Since</b> <p class="text-muted pull-right">{{ date_format( auth()->user()->created_at, "M-d Y") }}</p>
+                </li>
+                </ul>
+
+            </div>
+             <!-- /.box-body -->
+             <div class="box-footer">
+                <a href="{{ url()->previous() }}" class="btn btn-default">Back</a>
+                <a href="{{ url('admin/users', ['id' => auth()->user()->id]) }}" class="btn btn-primary pull-right">Edit</a>
+            </div>
+         </div>
+    </div>
+</div>
+
 
 @endsection
