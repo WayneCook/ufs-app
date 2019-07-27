@@ -29,12 +29,11 @@ class AdminViewComposer
 
         $admin['total_users'] = User::isNotSuperAdmin()->count();
 
-
         $admin['total_unread_messages'] = Message::where('read', false)->count();
+
         $admin['total_read_messages'] = Message::where('read', true)->count();
 
         $admin['total_home_page_views'] = views(Page::where('slug', 'home')->first())->count();
-
 
         return $view->with('admin', $admin);
 

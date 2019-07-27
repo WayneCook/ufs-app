@@ -49518,9 +49518,9 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Wayne Cook\Desktop\ufs_website\resources\js\app.js */"./resources/js/app.js");
-__webpack_require__(/*! C:\Users\Wayne Cook\Desktop\ufs_website\resources\sass\app.scss */"./resources/sass/app.scss");
-module.exports = __webpack_require__(/*! C:\Users\Wayne Cook\Desktop\ufs_website\public\toastr\toastr.scss */"./public/toastr/toastr.scss");
+__webpack_require__(/*! C:\Users\Wayne Cook\Desktop\UFS_website_test\resources\js\app.js */"./resources/js/app.js");
+__webpack_require__(/*! C:\Users\Wayne Cook\Desktop\UFS_website_test\resources\sass\app.scss */"./resources/sass/app.scss");
+module.exports = __webpack_require__(/*! C:\Users\Wayne Cook\Desktop\UFS_website_test\public\toastr\toastr.scss */"./public/toastr/toastr.scss");
 
 
 /***/ })
