@@ -14,7 +14,7 @@
 
 @section('content')
 <div class='row'>
-    <div class='col-md-6 col-sm-6 col-xs-12'>
+    <div class='col-md-6 col-sm-12 col-xs-12'>
         <div class="box box-warning">
             <div class="box-body box-profile">
                 <img class="profile-user-img img-responsive img-circle" src="{{ asset('storage/images/user-default.png') }}" alt="User profile picture">

@@ -1,0 +1,210 @@
+* {
+    font-family: "Raleway",  monospace, serif;
+}
+
+.top-nav {
+    position: absolute;
+    width: 100%;
+    z-index: 3;
+    height: 100%;
+}
+
+.main-section {
+    background-image: url("/images/forklift-background.jpg");
+    height: 100vh;
+    background-size: cover;
+    background-position: left center;
+    position: relative;
+    z-index: 1;
+}
+
+.main-section:before {
+    content: '';
+    display: block;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    // background-color: rgba(63,63,63,.4);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.89), rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.64));
+    z-index: 2;
+
+}
+
+nav {
+    background-color: #212121;
+    width: 100%;
+    display: block;
+}
+
+.small-logo {
+    width: 126px;
+}
+
+// nav
+.nav-container .container ul {
+    list-style-type: none;
+}
+
+.nav-container .container ul li {
+    display: inline-block;
+    color: white;
+    font-weight: 500;
+    padding: 20px;
+    font-size: 18px;
+}
+
+.d-flex.flex-column.logo-text-container {
+    padding-top: 10px;
+    margin-left: 5px;
+}
+
+.logo-text-container h1 {
+    color: white;
+    font-size: 25px;
+    line-height: 28px;
+    font-weight: 600;
+}
+
+.hero-section {
+    z-index: 2;
+}
+
+.hero-section .hero-column {
+    background-color: rgba(63,63,63,.8);
+}
+
+.hero-row .hero-column h1 {
+    font-size: 42px;
+    color: white;
+    font-weight: 700;
+    letter-spacing: 3px;
+}
+
+.top-nav-info {
+    position: relative;
+}
+
+.top-right-header {
+    background-color: rgba(63,63,63,.8);
+}
+
+.hero-column {
+    background-color: rgba(63, 63, 63, 0.8);
+}
+
+.hero-row {
+    height: 100%;
+}
+
+.info-container {
+    background-color: #212121;
+}
+
+.info-row {
+    height: 100%;
+}
+
+.info-right {
+    background-color: #FEA621;
+    height: 100%
+}
+
+// Info section
+
+.info-container .info-card {
+    padding-top: 60px;
+    padding-bottom: 80px;
+
+}
+
+.info-container .info-card h2 {
+    color: white;
+    font-weight: 600;
+    font-size: 26px;
+    text-align: left;
+}
+
+.info-wrapper {
+    background-color: #212121;
+    position: relative;
+    z-index: 1;
+}
+
+.card-wrapper {
+    background-color: #212121;
+}
+
+.card-wrapper-yellow {
+    background-color: #FEA621;
+}
+
+.info-container .info-card .text-color-yellow {
+    color: #FEA621;
+}
+
+.logo-text-container .text-color-yellow {
+    color: #FEA621;
+}
+
+.info-container .info-card p {
+    color: #888;
+    font-size: 16px;
+    margin-top: 20px;
+    line-height: 1.6;
+    font-weight: 500;
+}
+
+.info-image-container {
+    position: relative;
+    z-index: 1;
+}
+
+.info-container .info-card img {
+    width: 100%;
+    z-index: 1;
+    position: relative;
+}
+
+.info-container .info-card-yellow p {
+    color: #212121;
+}
+
+.logo-text-container .text-color-yellow {
+    color: #FEA621;
+}
+
+.card-wrapper-yellow .info-card-yellow .text-dark {
+    color: #212121;
+}
+
+
+.service-area-wrapper .service-area-right {
+    background-color: #4b4b4a;
+
+}
+
+.service-area-wrapper .service-area-right h1 {
+    font-size: 42px;
+    color: white;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-align: center;
+    margin: 0px;
+
+}
+
+.map-wrapper {
+    margin: 80px 0px;
+}
+
+.location-icon {
+    width: 92px;
+    margin: auto;
+    margin-bottom: 24px;
+    text-align: center;
+    display: block;
+}
+
+#Capa_1 {
+    fill: #fea627;
+}

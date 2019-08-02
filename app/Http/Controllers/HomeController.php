@@ -25,7 +25,7 @@ class HomeController extends Controller
      */
     public function index(Page $page)
     {
-        $count = views($page->home())->record();
+        // $count = views($page->home())->record();
 
         return view('home');
     }

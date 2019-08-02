@@ -12,6 +12,8 @@
     "devDependencies": {
         "axios": "^0.19",
         "bootstrap": "^4.1.0",
+        "browser-sync": "^2.26.7",
+        "browser-sync-webpack-plugin": "^2.0.1",
         "cross-env": "^5.1",
         "jquery": "^3.2",
         "laravel-mix": "^4.0.7",
@@ -19,11 +21,14 @@
         "popper.js": "^1.12",
         "resolve-url-loader": "^2.3.1",
         "sass": "^1.15.2",
-        "sass-loader": "^7.1.0",
-        "vue": "^2.5.17",
-        "vue-template-compiler": "^2.6.10"
+        "sass-loader": "^7.1.0"
     },
     "dependencies": {
-        "toastr": "^2.1.4"
+        "stylus": "^0.54.5",
+        "stylus-loader": "^3.0.2",
+        "toastr": "^2.1.4",
+        "vue": "^2.6.10",
+        "vue-template-compiler": "^2.6.10",
+        "vuetify": "^2.0.2"
     }
 }
