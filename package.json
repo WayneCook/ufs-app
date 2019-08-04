@@ -24,6 +24,7 @@
         "sass-loader": "^7.1.0"
     },
     "dependencies": {
+        "slick-carousel": "^1.8.1",
         "stylus": "^0.54.5",
         "stylus-loader": "^3.0.2",
         "toastr": "^2.1.4",

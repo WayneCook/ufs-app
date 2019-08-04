@@ -48,6 +48,9 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
 
 Route::get('/datatable','DatatablesController@getIndex');
 
+Route::resource('message/send', 'Admin\MessagesController');
+
+
 Auth::routes();
 
 

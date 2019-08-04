@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Support\Facades\DB;
 use Creitive\Breadcrumbs\Breadcrumbs;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Message;
 use Helper;
@@ -45,7 +46,28 @@ class MessagesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $attributes = [
+            'body' => 'Message',
+            'name' => 'Name',
+            'email' => 'Email',
+            'phone' => 'Phone',
+            'location' => 'Location',
+        ];
+
+
+        $validator = Validator::make(request()->all(), [
+            'name' => 'required|string|max:25|min:3',
+            'email' => 'max:25',
+            'phone' => 'max:25',
+            'location' => 'max:25',
+            'body' => 'required|string|max:25|min:3',
+        ],[],$attributes)->validate();
+
+
+
+        $message = new Message();
+        $message->fill($request->all());
+        $message->save();
     }
 
     /**

@@ -4,16 +4,14 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-require('./bootstrap');
-
-
 
 window.Vue = require('vue');
 import Vuetify from 'vuetify'
 
-import 'vuetify/dist/vuetify.min.css'
+// import 'vuetify/dist/vuetify.min.css'
 
 Vue.config.productionTip = false;
+require('./bootstrap');
 
 
 /**
@@ -39,9 +37,7 @@ Vue.use(Vuetify)
 
 
 const app = new Vue({
-    data: () => ({
-        drawer: false,
-      }),
+
     el: '#app',
     vuetify: new Vuetify(),
 
