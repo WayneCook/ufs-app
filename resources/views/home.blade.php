@@ -340,6 +340,12 @@
                 </div>
             </div>
 
+            <a href="tel:562-450-4194">
+                <div class="phone-icon-wrapper">
+                    @include('svgs/phone_regular');
+                </div>
+            </a>
+
         </div>
         {{-- /main-container --}}
 

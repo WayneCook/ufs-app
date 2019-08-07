@@ -10771,10 +10771,25 @@ nav {
 }
 
 .hero-row .hero-column h1 {
-  font-size: 42px;
+  font-size: 46px;
   color: white;
   font-weight: 700;
   letter-spacing: 3px;
+}
+
+.phone-icon-wrapper {
+  display: none;
+  width: 70px;
+  position: fixed;
+  z-index: 999999;
+  right: 0px;
+  bottom: 0px;
+  height: 70px;
+  background-color: #FEA621;
+  border-radius: 50%;
+  padding: 17px;
+  margin: 10px;
+  box-shadow: 0px 0px 12px -4px #000000b3;
 }
 
 .top-nav-info {
