@@ -2,7 +2,17 @@
     font-family: "Raleway",  monospace, serif;
 }
 
+.phone-number {
+    font-family: "Open Sans", sans-serif;
+    color: #FEA621;
+    font-weight: 600;
+    font-size: 26px;
+}
 
+.top-right-header .call-now {
+    font-size: 26px;
+    font-weight: 600;
+}
 
 a:link {
     text-decoration: none;
@@ -65,11 +75,18 @@ nav {
 
 .small-logo {
     width: 126px;
+    height: 81px;
 }
 
 // nav
 
 .nav-container {
+    z-index: 9999;
+    background-color: #212121;
+}
+
+
+.nav-container .container{
     z-index: 9999;
 }
 
@@ -106,7 +123,7 @@ nav {
 }
 
 .hero-section .hero-column {
-    background-color: rgba(63,63,63,.8);
+    background-color: rgba(37, 37, 37, 0.69);
 }
 
 .hero-row .hero-column h1 {
@@ -312,15 +329,15 @@ form {
 
 .hidden-top {
     height: 129.27px;
-    transition: all 0.25s ease-in-out;
+    transition: all 0.10s ease-in-out;
     overflow: hidden;
-
 }
+
 
 .shrink-hidden-top {
     height: 0px;
     overflow: hidden;
-    transition: all 0.25s ease-in-out;
+    transition: all 0.10s ease-in-out;
 
 }
 
@@ -477,6 +494,72 @@ form {
     border-color: #FEA621;
 }
 
+.footer-container {
+    padding: 50px 0px 100px 0px;
+}
+
+.mobile-nav {
+    display: none;
+
+}
+
+  .ham {
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    transition: transform 400ms;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  .hamRotate.active {
+    transform: rotate(45deg);
+  }
+  .hamRotate180.active {
+    transform: rotate(180deg);
+  }
+  .line {
+    fill:none;
+    transition: stroke-dasharray 400ms, stroke-dashoffset 400ms;
+    stroke:#fff;
+    stroke-width:5.5;
+    stroke-linecap:round;
+  }
+
+  .ham2 .top {
+    stroke-dasharray: 40 121;
+  }
+  .ham2 .bottom {
+    stroke-dasharray: 40 121;
+  }
+  .ham2.active .top {
+    stroke-dashoffset: -102px;
+  }
+  .ham2.active .bottom {
+    stroke-dashoffset: -102px;
+  }
+
+.mobile-about-section {
+    display: none;
+    background-color: #FEA621;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.contact-section-right {
+    padding-top: 40px!important;
+    padding-bottom: 40px!important;
+}
+
+.text-wrapper-large
+{
+    display: block;
+}
+
+.text-wrapper-small
+{
+    display: none;
+}
 
 
 

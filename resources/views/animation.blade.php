@@ -12,25 +12,58 @@
         <link rel="stylesheet" href="{{ asset('slick-carousel/slick/slick-theme.css') }}">
         <link rel="stylesheet" href="{{ asset('css/responsive-home.css') }}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
-        <link rel="stylesheet" href="{{ asset('css/intro-animation.css') }}">
+
+        <style>
+            .intro-animation {
+                position: absolute;
+                height: 100vh;
+                width: 100vw;
+                background-color: black;
+                z-index: 9999999;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .intro-logo-wrapper {
+                position: relative;
+                width: 250px;
+                height: 200px;
+            }
+
+            .intro-logo-wrapper img {
+                position: absolute;
+                width: 100%;
+            }
+
+            img .animated {
+                /* animation-duration: 1.75s; */
+                animation-duration: 2s;
+                /* animation-delay: 2s; */
+                /* animation-iteration-count: infinite; */
+            }
+
+
+
+        </style>
 
     </head>
     <body>
+        <div class="intro-animation">
+            <div class="intro-logo-wrapper">
 
+                <img src="{{ asset('images/logo_pieces/circle.png') }}" class="logo_circle animated bounceInDown delay-2s" alt="logo_circle">
+                <img src="{{ asset('images/logo_pieces/bottom.png') }}" class="logo_bottom animated zoomInDown rollIn delay-1s" alt="logo_bottom">
+                <img src="{{ asset('images/logo_pieces/left.png') }}" class="logo_left animated zoomInUp delay-1s" alt="logo_left">
+                <img src="{{ asset('images/logo_pieces/logo-u.png') }}" class="logo_letters animated zoomInLeft delay-1s" alt="logo_letters">
+                <img src="{{ asset('images/logo_pieces/logo-f.png') }}" class="logo_letters animated jackInTheBox delay-1s" alt="logo_letters">
+                <img src="{{ asset('images/logo_pieces/logo-s.png') }}" class="logo_letters animated zoomInRight delay-1s" alt="logo_letters">
+                <img src="{{ asset('images/logo_pieces/top.png') }}" class="logo_top animated rollIn delay-1s" alt="logo_top">
 
-        <div class="main-container m-0 p-0">
-                <div class="intro-animation-wrapper container-fluid  m-0 p-0">
-                        <div class="intro-logo-wrapper">
-                            <img src="{{ asset('images/logo_pieces/circle.png') }}" class="logo-animation logo_circle bounceInDown delay-1s" alt="logo_circle">
-                            <img src="{{ asset('images/logo_pieces/bottom.png') }}" class="logo-animation logo_bottom zoomInDown rollIn" alt="logo_bottom">
-                            <img src="{{ asset('images/logo_pieces/left.png') }}" class="logo-animation logo_left zoomInUp" alt="logo_left">
-                            <img src="{{ asset('images/logo_pieces/logo-u.png') }}" class="logo-animation logo_letters zoomInLeft" alt="logo_letters">
-                            <img src="{{ asset('images/logo_pieces/logo-f.png') }}" class="logo-animation logo_letters jackInTheBox" alt="logo_letters">
-                            <img src="{{ asset('images/logo_pieces/logo-s.png') }}" class="logo-animation logo_letters zoomInRight" alt="logo_letters">
-                            <img src="{{ asset('images/logo_pieces/top.png') }}" class="logo-animation logo_top rollIn" alt="logo_top">
-                        </div>
-                    </div>
-                    {{-- /intro --}}
+            </div>
+        </div>
+
+        <div class="main-container p-0">
             <section class="main-section" id="home">
                 <div class="top-nav d-flex flex-column">
                     <div class="head-nav-wrapper">
@@ -143,6 +176,8 @@
                         </div>
                     </div>
                 </section>
+
+                <div id="contact">
                 <div class="box-shadow-wrapper">
                         <div class="brands-section-wrapper container-fluid">
                             <div class="row brand-images-container">
@@ -175,7 +210,7 @@
                     </div>
                     {{-- /brands-section-wrapper --}}
 
-                <section id="contact" class="container-fluid form-section-wrapper">
+                <section class="container-fluid form-section-wrapper">
                     <div class="container">
                         <div class="row">
                             <div class="col-lg-8 col-md-12 pt-5 pb-5">
@@ -257,10 +292,10 @@
                         </div>
                     </div>
                 </section>
-
+            </div>
                 {{-- /contact-section --}}
 
-                <div class="container-fluid mobile-about-section">
+                <div id="about" class="container-fluid mobile-about-section">
                     <div class="row">
                         <div class="p-4 about-right-container d-flex flex-column justify-content-center">
                             <h1 class="text-left font-weight-bold">ABOUT US</h1>
@@ -269,7 +304,7 @@
                      </div>
                  </div>
 
-                <section id="about" class="container-fluid about-section p-0" style="background-image: url('{{ asset('images/about-background.jpg') }}')">
+                <section class="container-fluid about-section p-0" style="background-image: url('{{ asset('images/about-background.jpg') }}')">
                     <div class="container about-section-container">
                         <div class="row about-section-row">
                             <div class="col-lg-8 col-12">
@@ -338,35 +373,19 @@
             </div>
 
         </div>
+
         {{-- /main-container --}}
 
 
 <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script src="{{ asset('slick-carousel/slick/slick.js') }}"></script>
+
+
+
 <script type="text/javascript">
 
-$(document).ready(function() {
-
-    if(document.cookie.indexOf('animated') > -1 ) {
-        $('.intro-animation-wrapper').hide();
-    }
-    else {
-        setcookie()
-        animate();
-    }
-    function setcookie(){
-        document.cookie = 'animated=true';
-    }
-
-    function animate(){
-        $('body').toggleClass('noScroll');
-        $('.logo-animation').toggleClass('animated')
-        $('.intro-animation-wrapper').delay( 3500 ).fadeOut( 2000, function(){
-
-        $('body').toggleClass('noScroll');
-        });
-    }
+window.onload=function(){
 
     $('.brand-images-container').slick({
         slidesToShow: 8,
@@ -407,9 +426,7 @@ $(document).ready(function() {
         ]
       });
 
-    });
-// End ready
-
+}
 
 $(window).scroll(function(){
     if ($(this).scrollTop() > 50) {
@@ -426,7 +443,6 @@ menuContainer = $('.nav-container');
 
 
  topMenu = $("#navigation"),
-
  navContainer = $('.nav-container');
 
  topMenuHeight = topMenu.outerHeight()+1,
@@ -462,7 +478,7 @@ $(window).scroll(function(){
 
    // Get id of current scroll item
    var cur = scrollItems.map(function(){
-     if ($(this).offset().top < fromTop + 100)
+     if ($(this).offset().top < fromTop)
        return this;
    });
    // Get the id of the current element
@@ -477,8 +493,6 @@ $(window).scroll(function(){
          .filter("[href=#"+id+"]").addClass("active-link");
    }
 });
-
-
 
 
 

@@ -99,6 +99,7 @@
 $(function() {
     $('#messages-table').DataTable({
         processing: true,
+        order: [[ 4, "desc" ]],
         serverSide: true,
         responsive: true,
         bAutoWidth: false,

@@ -14,17 +14,12 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/roles', function () {
-
-    $users = auth()->user()->roles()->get();
-
-    dd($users);
-
-});
-
 
 Route::get('/', 'HomeController@index')->name('home');
 
+Route::get('/test', function(){
+    return view('animation');
+});
 
 
 // Admin routes
@@ -43,7 +38,6 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::get('admin/password/store','Admin\ChangePasswordController@store');
 
 });
-
 
 
 Route::get('/datatable','DatatablesController@getIndex');

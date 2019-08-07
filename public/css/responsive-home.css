@@ -1,0 +1,180 @@
+@media screen and (max-width: 991px) {
+
+    header.hidden-top {
+        display: none;
+    }
+
+    .mobile-nav {
+        display: flex!important;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .mobile-about-section {
+        display: block;
+    }
+
+    .text-wrapper-small
+    {
+        display: block;
+    }
+
+    .text-wrapper-large
+    {
+        display: none;
+    }
+
+    .container {
+        max-width: 100%;
+    }
+
+    .container.hero-container.flex-grow-1 {
+        margin: 0px;
+
+    }
+
+    .hero-column-middle {
+        display: none;
+    }
+
+    #navigation {
+        width: 265px;
+        background-color: #212121;
+        height: 100vh;
+        transition: left .25s ease-out;
+    }
+
+
+    .small-logo-mobile {
+        width: 75px;
+        display: inline-block;
+    }
+
+    .hero-column {
+        background-color: rgba(39, 39, 39, 0.78);
+        padding-top: 65px;
+    }
+
+    .text-wrapper-small .forklift-yellow {
+        color: #FEA621!important;
+    }
+
+    .main-section:before {
+
+        background-image: none;
+
+    }
+
+    .hero-column h1 {
+        text-align: center;
+    }
+
+    .hamburger-icon {
+        display: inline-block;
+    }
+
+    #navigation a {
+        display: block;
+    }
+
+    .nav-container {
+        background-color: transparent;
+        display: block!important;
+        position: relative;
+        transition: left .25s ease-out;
+        left: -300px;
+    }
+
+    .nav-container.active {
+        left: 0px;
+    }
+
+    .head-nav-wrapper {
+        height: 70px;
+    }
+
+    .hero-column-left {
+        display: none;
+    }
+
+    .form-section-wrapper {
+        padding: 0px 0px!important;
+    }
+
+    .form-section-wrapper .row {
+        padding-top: 0px 0px!important;
+    }
+
+    .service-area-wrapper  {
+        padding: 0px 0px!important;
+
+    }
+
+    .service-area-right {
+        display: none!important;
+    }
+
+    .map-wrapper {
+        padding: 0px!important;
+        margin: 0px;
+    }
+
+    .about-column-right {
+        display: none;
+    }
+
+    .service-area-wrapper {
+        padding-top: 60px;
+    }
+
+
+    .contact-section-right h1 {
+        font-size: 32px;
+
+    }
+
+    .info-wrapper {
+        padding-bottom: 80px;
+    }
+
+    .info-container .info-card {
+        padding-top: 20px;
+        padding-bottom: 0px;
+    }
+
+    h1.contact-form-label {
+        margin-top: 0px;
+    }
+
+    .mobile-nav.container-fluid {
+        display: block;
+        background-color: #212121;
+    }
+
+
+    .nav-container .container {
+        padding: 0px;
+        margin: 0px;
+    }
+
+
+    .main-section {
+        height: 80vh;
+    }
+
+  }
+
+
+@media screen and (max-width: 576px) {
+
+    .main-section {
+        background-image: url("/images/forklift-background-small.jpg");
+
+    }
+
+
+
+}
+
+

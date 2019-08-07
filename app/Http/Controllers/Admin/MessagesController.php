@@ -6,7 +6,9 @@ use Creitive\Breadcrumbs\Breadcrumbs;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use App\Mail\MessageSent;
 use App\Message;
+use Mail;
 use Helper;
 
 class MessagesController extends Controller
@@ -54,20 +56,22 @@ class MessagesController extends Controller
             'location' => 'Location',
         ];
 
-
         $validator = Validator::make(request()->all(), [
-            'name' => 'required|string|max:25|min:3',
-            'email' => 'max:25',
+            'name' => 'required|string|max:50|min:3',
+            'email' => 'max:50',
             'phone' => 'max:25',
             'location' => 'max:25',
-            'body' => 'required|string|max:25|min:3',
+            'body' => 'required|string|max:1000|min:3',
         ],[],$attributes)->validate();
-
-
 
         $message = new Message();
         $message->fill($request->all());
         $message->save();
+
+        Mail::to('waynedemetra@gmail.com')->send(new MessageSent($message));
+
+        return redirect()->route('home')->with('success', 'Thank you for contacting us, you will hear back from us shortly.');
+
     }
 
     /**

@@ -1,0 +1,53 @@
+body {
+    overflow: overlay;
+}
+
+body.noScroll { /* Disable scrolling */
+    overflow: hidden;
+  }
+
+.main-container.active {
+    display: block;
+}
+
+.main-container {
+    display: block;
+}
+
+.intro-animation-wrapper {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: #212121;
+    z-index: 9999999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.intro-logo-wrapper {
+    position: relative;
+    width: 250px;
+    height: 200px;
+}
+
+.intro-logo-wrapper img {
+    position: absolute;
+    width: 100%;
+}
+
+
+img.logo-animation {
+    display: none;
+
+}
+
+
+img.animated {
+    display: block;
+    animation-duration: 2s;
+}
