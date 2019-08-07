@@ -10670,11 +10670,6 @@ a:visited {
   color: gray;
 }
 
-a:hover {
-  text-decoration: none;
-  color: #FEA621;
-}
-
 a:active {
   text-decoration: none;
   color: gray;
@@ -10717,7 +10712,7 @@ nav {
 }
 
 .small-logo {
-  width: 126px;
+  width: 115px;
   height: 81px;
 }
 
@@ -10732,6 +10727,7 @@ nav {
 
 .nav-container nav a {
   display: inline-block;
+  width: 100%;
   color: white;
   font-weight: 500;
   padding: 20px;
@@ -10740,7 +10736,16 @@ nav {
   transition: all 0.15s ease-in-out;
 }
 
-.nav-container nav a:hover {
+.nav-container nav li {
+  transition: all 0.2s ease-in-out;
+  cursor: default;
+}
+
+.nav-container nav li.current {
+  background-color: #FEA621;
+}
+
+.nav-container nav li:hover {
   background-color: #FEA621;
   cursor: default;
 }
@@ -10929,6 +10934,7 @@ nav {
 
 .head-nav-wrapper {
   position: fixed;
+  height: 197px;
   width: 100%;
   z-index: 1;
 }
@@ -11201,5 +11207,14 @@ form {
 
 .text-wrapper-small {
   display: none;
+}
+
+nav ul li {
+  display: inline-block;
+  padding: 0px;
+}
+
+nav ul {
+  padding: 0px;
 }
 

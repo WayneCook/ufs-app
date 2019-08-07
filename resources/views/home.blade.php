@@ -31,7 +31,7 @@
                         </div>
                     </div>
                     {{-- /intro --}}
-            <section class="main-section" id="home">
+            <section class="main-section scrollable" id="home">
                 <div class="top-nav d-flex flex-column">
                     <div class="head-nav-wrapper">
                         <header class="container hidden-top">
@@ -63,13 +63,15 @@
                                 @include('svgs/smallLogo')
                         </span>
                     </div>
-                    <nav class="nav-container">
+                    <nav class="nav-container main" role="main">
                         <div class="container">
-                            <nav id="navigation">
-                                <a href="#home" class="active-link">HOME</a>
-                                <a href="#services">SERVICES</a>
-                                <a href="#contact">CONTACT</a>
-                                <a href="#about">ABOUT</a>
+                            <nav id="navigation" class="scroll-nav">
+                                <ul>
+                                    <li class="current"><a class="nav-click" href="#home">HOME</a></li>
+                                    <li><a class="nav-click" href="#services">SERVICES</a></li>
+                                    <li><a class="nav-click" href="#contact">CONTACT</a></li>
+                                    <li><a class="nav-click" href="#about">ABOUT</a></li>
+                                </ul>
                             </nav>
                         </div>
                     </nav>
@@ -99,7 +101,7 @@
                 </div>
 
             </section>
-                <section class="container-fluid info-wrapper" id="services">
+                <section class="container-fluid info-wrapper scrollable" id="services">
                     <div class="container info-container flex-grow-1">
                         <div class="row info-row">
                             <div class="col-lg-4 col-md-6 p-4 card-wrapper">
@@ -175,7 +177,7 @@
                     </div>
                     {{-- /brands-section-wrapper --}}
 
-                <section id="contact" class="container-fluid form-section-wrapper">
+                <section id="contact" class="container-fluid form-section-wrapper scrollable">
                     <div class="container">
                         <div class="row">
                             <div class="col-lg-8 col-md-12 pt-5 pb-5">
@@ -259,7 +261,7 @@
                 </section>
 
                 {{-- /contact-section --}}
-
+                <div id="about">
                 <div class="container-fluid mobile-about-section">
                     <div class="row">
                         <div class="p-4 about-right-container d-flex flex-column justify-content-center">
@@ -269,7 +271,7 @@
                      </div>
                  </div>
 
-                <section id="about" class="container-fluid about-section p-0" style="background-image: url('{{ asset('images/about-background.jpg') }}')">
+                <section class="container-fluid about-section p-0 scrollable" style="background-image: url('{{ asset('images/about-background.jpg') }}')">
                     <div class="container about-section-container">
                         <div class="row about-section-row">
                             <div class="col-lg-8 col-12">
@@ -286,6 +288,7 @@
                         </div>
                     </div>
                 </section>
+            </div>
 
             <section class="service-area-wrapper container-fluid" style="background-image: url('{{ asset('images/map_background.jpg') }}')">
                 <div class="container">
@@ -344,9 +347,15 @@
 <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script src="{{ asset('slick-carousel/slick/slick.js') }}"></script>
+<script src="{{ asset('js/jquery-nav.js') }}"></script>
 <script type="text/javascript">
 
 $(document).ready(function() {
+
+
+	$('#navigation').onePageNav();
+
+
 
     if(document.cookie.indexOf('animated') > -1 ) {
         $('.intro-animation-wrapper').hide();
@@ -373,6 +382,8 @@ $(document).ready(function() {
         mobileFirst: true,
         infinite: true,
         slidesToScroll: 1,
+        pauseOnHover: false,
+        pauseOnFocus: false,
         autoplay: true,
         autoplaySpeed: 700,
         responsive: [
@@ -419,68 +430,20 @@ $(window).scroll(function(){
     }
 });
 
-// Cache selectors
-var lastId,
+
 hamburger = $('.hamburger-icon');
-menuContainer = $('.nav-container');
 
 
- topMenu = $("#navigation"),
+topMenu = $("#navigation"),
 
- navContainer = $('.nav-container');
+navContainer = $('.nav-container');
 
- topMenuHeight = topMenu.outerHeight()+1,
- // All list items
- menuItems = topMenu.find("a"),
- // Anchors corresponding to menu items
- scrollItems = menuItems.map(function(){
-   var item = $($(this).attr("href"));
-    if (item.length) { return item; }
- });
 
-// Bind click handler to menu items
-// so we can get a fancy scroll animation
-menuItems.click(function(e){
+
+$('.nav-click').click(function(){
+
     $('#clickable').trigger('click');
-    hamburger.trigger('click');
-    topMenu.toggleClass('active');
-    navContainer.toggleClass('active');
-
-    menuItems.removeClass();
-  var href = $(this).attr("href"),
-      offsetTop = href === "#" ? 0 : $(href).offset().top-topMenuHeight+50;
-  $('html, body').stop().animate({
-      scrollTop: offsetTop
-  }, 850);
-  e.preventDefault();
-});
-
-// Bind to scroll
-$(window).scroll(function(){
-   // Get container scroll position
-   var fromTop = $(this).scrollTop()+topMenuHeight;
-
-   // Get id of current scroll item
-   var cur = scrollItems.map(function(){
-     if ($(this).offset().top < fromTop + 100)
-       return this;
-   });
-   // Get the id of the current element
-   cur = cur[cur.length-1];
-   var id = cur && cur.length ? cur[0].id : "";
-
-   if (lastId !== id) {
-       lastId = id;
-       // Set/remove active class
-       menuItems
-         .removeClass()
-         .filter("[href=#"+id+"]").addClass("active-link");
-   }
-});
-
-
-
-
+})
 
 hamburger.click(function(){
 
