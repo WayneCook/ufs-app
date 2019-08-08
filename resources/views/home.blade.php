@@ -367,11 +367,13 @@ $(window).load(function() {
 
     if(document.cookie.indexOf('animated') > -1 ) {
         $('.intro-animation-wrapper').hide();
+        $('body').toggleClass('noScroll');
     }
     else {
         setcookie()
         animate();
     }
+
     function setcookie(){
         //Set animation cookie
         var now = new Date();
@@ -385,7 +387,7 @@ $(window).load(function() {
 
         $('.logo-animation').toggleClass('animated')
         $('.intro-animation-wrapper').delay( 3500 ).fadeOut( 3000, function(){
-        $('body').toggleClass('noScroll');
+             $('body').toggleClass('noScroll');
         });
     }
 
