@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        <title>Universal Forklift Services</title>
+        <title>Universal Forklift Service</title>
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
@@ -44,6 +44,7 @@
                                         <div class="d-flex flex-column logo-text-container">
                                             <h1 class="m-0 p-0">UNIVERSAL</h1>
                                             <h1 class="m-0 p-0 text-color-yellow">FORKLIFT</h1>
+                                            <h1 class="m-0 p-0">SERVICE</h1>
                                         </div>
                                     </div>
                                 </div>
@@ -92,7 +93,7 @@
                                 <div class="text-wrapper-small">
                                     <h1>UNIVERSAL</h1>
                                     <h1 class="forklift-yellow">FORKLIFT</h1>
-                                    <h1>SERVICES</h1>
+                                    <h1>SERVICE</h1>
                                 </div>
                             </div>
                         </div>
@@ -314,6 +315,8 @@
                         <div class="col">
                             <h5 class="font-weight-bold text-dark">INFORMATION</h5>
                             <a class="footer-link" href="#about">About Us</a>
+                            <br>
+                            <a class="footer-link" href="{{ url('admin') }}">Admin</a>
                         </div>
                         <div class="col">
                             <h5 class="font-weight-bold text-dark">SERVICES</h5>

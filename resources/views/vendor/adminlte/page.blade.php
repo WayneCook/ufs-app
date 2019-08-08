@@ -22,7 +22,7 @@
             <nav class="navbar navbar-static-top">
                 <div class="container">
                     <div class="navbar-header">
-                        <a href="{{ url(config('adminlte.dashboard_url', 'home')) }}" class="navbar-brand">
+                        <a href="{{ url(config('adminlte.dashboard_url', '/admin')) }}" class="navbar-brand">
                             {!! config('adminlte.logo', '<b>Admin</b>LTE') !!}
                         </a>
                         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
@@ -39,7 +39,7 @@
                     <!-- /.navbar-collapse -->
             @else
             <!-- Logo -->
-            <a href="{{ url(config('adminlte.dashboard_url', 'home')) }}" class="logo">
+            <a href="{{ url(config('adminlte.dashboard_url', '/admin')) }}" class="logo">
                 <!-- mini logo for sidebar mini 50x50 pixels -->
                 <span class="logo-mini">{!! config('adminlte.logo_mini', '<b>A</b>LT') !!}</span>
                 <!-- logo for regular state and mobile devices -->
@@ -59,51 +59,11 @@
 
                     <div class="navbar-custom-menu pull-left">
                         <ul class="nav navbar-nav">
-                            <!-- Messages: style can be found in dropdown.less-->
-                            {{-- <li class="dropdown messages-menu">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="fa fa-envelope-o"></i>
-                            <span class="label label-success">{{ $admin['totals']->messages }}</span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li class="header">You have {{ $admin['totals']->messages }} messages</li>
-                                <li>
-                                <!-- inner menu: contains the actual data -->
-                                <ul class="menu">
-                                    <li><!-- start message -->
-                                    <a href="#">
-                                        <div class="pull-left">
-                                        <img src="{{ asset('storage/images/user-default.png') }}" class="img-circle" alt="User Image">
-                                        </div>
-                                        <h4>
-                                        Support Team
-                                        <small><i class="fa fa-clock-o"></i> 5 mins</small>
-                                        </h4>
-                                        <p>Why not buy a new awesome theme?</p>
-                                    </a>
-                                    </li>
-                                    <!-- end message -->
-                                    <li>
-                                        <a href="#">
-                                            <div class="pull-left">
-                                            <img src="{{ asset('storage/images/user-default.png') }}" class="img-circle" alt="User Image">
-                                            </div>
-                                            <h4>
-                                            AdminLTE Design Team
-                                            <small><i class="fa fa-clock-o"></i> 2 hours</small>
-                                            </h4>
-                                            <p>Why not buy a new awesome theme?</p>
-                                        </a>
-                                    </li>
-                                </ul>
-                                </li>
-                                <li class="footer"><a href="#">See All Messages</a></li>
-                            </ul>
-                            </li> --}}
+
                             <!-- Dropdown user menu -->
                             <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
-                                <img src="{{ asset('storage/images/user-default.png') }}" class="user-image" alt="User Image">
+                                <img src="{{ asset('images/user-default.png') }}" class="user-image" alt="User Image">
                                 <span class="hidden-xs">{{ auth()->user()->name }}</span>
                             </a>
                             <ul class="dropdown-menu">

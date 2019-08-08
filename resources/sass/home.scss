@@ -6,11 +6,11 @@
     font-family: "Open Sans", sans-serif;
     color: #FEA621;
     font-weight: 600;
-    font-size: 26px;
+    font-size: 28px;
 }
 
 .top-right-header .call-now {
-    font-size: 26px;
+    font-size: 28px;
     font-weight: 600;
 }
 
@@ -69,7 +69,7 @@ nav {
 }
 
 .small-logo {
-    width: 115px;
+    width: 118px;
     height: 81px;
 }
 
@@ -113,15 +113,16 @@ nav {
 
 
 .d-flex.flex-column.logo-text-container {
-    padding-top: 10px;
     margin-left: 5px;
+    padding-top: 7px;
 }
 
 .logo-text-container h1 {
-    color: white;
-    font-size: 26px;
-    line-height: 30px;
-    font-weight: 600;
+    color: #fafafa;
+    font-size: 20px;
+    line-height: 21px;
+    font-weight: 500;
+    letter-spacing: 1px;
 }
 
 .hero-section {
@@ -435,7 +436,8 @@ form {
 }
 
 .contact-section-right h1 {
-    font-size: 42px;
+    font-family: "Open Sans", sans-serif;
+    font-size: 32px;
     color: white;
     font-weight: 700;
 }
