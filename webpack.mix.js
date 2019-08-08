@@ -15,6 +15,7 @@ mix.js('resources/js/app.js', 'public/js')
     mix.sass('resources/sass/app.scss', 'public/css');
     // .sass('public/toastr/toastr.scss', 'public/toastr/toastr.css');
 
+
     // mix.copy('node_modules/toastr/*','public/toastr');
     // mix.copy('node_modules/slick-carousel/*','public/slick-carousel');
 
