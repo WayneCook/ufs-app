@@ -57,7 +57,7 @@ return [
 
     'from' => [
         'address' => env('MAIL_FROM_ADDRESS', 'universalforkliftservice@gmail.com'),
-        'name' => env('MAIL_FROM_NAME', 'Universal Forklift Services'),
+        'name' => env('MAIL_FROM_NAME', 'Universal Forklift Service'),
     ],
 
     /*
