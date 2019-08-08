@@ -69,7 +69,7 @@
                             <ul class="dropdown-menu">
                                 <!-- User image -->
                                 <li class="user-header">
-                                <img src="{{ asset('storage/images/user-default.png') }}" class="img-circle" alt="User Image">
+                                <img src="{{ asset('images/user-default.png') }}" class="img-circle" alt="User Image">
 
                                 <p>
                                     {{ auth()->user()->name }}
