@@ -126,7 +126,7 @@
                                     <div class="info-image-container">
                                          <img src="{{ asset('images/forklift_engine.jpg') }}" alt="">
                                     </div>
-                                    <p>We have great pricing and years of experience in sourcing the right forklift part for your particular need.</p>
+                                    <p>We have great pricing and years of experience in sourcing the right forklift parts for your particular need.</p>
                                 </div>
 
                             </div>
@@ -145,7 +145,7 @@
                         </div>
                     </div>
                 </section>
-                <div class="box-shadow-wrapper">
+                {{-- <div class="box-shadow-wrapper">
                         <div class="brands-section-wrapper container-fluid">
                             <div class="row brand-images-container">
                                 <div class="p-0"><img src="{{ asset('images/brands/brand_1.jpg') }}" alt="Forklift-brand"></div>
@@ -174,7 +174,7 @@
                                 <div class="p-0"><img src="{{ asset('images/brands/brand_24.jpg') }}" alt="Forklift-brand"></div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                     {{-- /brands-section-wrapper --}}
 
                 <section id="contact" class="container-fluid form-section-wrapper scrollable">
@@ -271,7 +271,7 @@
                      </div>
                  </div>
 
-                <section class="container-fluid about-section p-0 scrollable" style="background-image: url('{{ asset('images/about-background.jpg') }}')">
+                <section class="container-fluid about-section p-0 scrollable">
                     <div class="container about-section-container">
                         <div class="row about-section-row">
                             <div class="col-lg-8 col-12">
@@ -387,46 +387,46 @@ $(document).ready(function() {
         });
     }
 
-    $('.brand-images-container').slick({
-        slidesToShow: 8,
-        mobileFirst: true,
-        infinite: true,
-        slidesToScroll: 1,
-        pauseOnHover: false,
-        pauseOnFocus: false,
-        autoplay: true,
-        autoplaySpeed: 700,
-        responsive: [
-            {
-            breakpoint: 1024,
-            settings: {
-                slidesToShow: 8,
-                slidesToScroll: 1,
-            }
-            },
-            {
-            breakpoint: 600,
-            settings: {
-                slidesToShow: 4,
-                slidesToScroll: 1
-            }
-            },
-            {
-            breakpoint: 480,
-            settings: {
-                slidesToShow: 2,
-                slidesToScroll: 1
-            }
-            },
-            {
-            breakpoint: 0,
-            settings: {
-                slidesToShow: 2,
-                slidesToScroll: 1
-            }
-            }
-        ]
-      });
+    // $('.brand-images-container').slick({
+    //     slidesToShow: 8,
+    //     mobileFirst: true,
+    //     infinite: true,
+    //     slidesToScroll: 1,
+    //     pauseOnHover: false,
+    //     pauseOnFocus: false,
+    //     autoplay: true,
+    //     autoplaySpeed: 700,
+    //     responsive: [
+    //         {
+    //         breakpoint: 1024,
+    //         settings: {
+    //             slidesToShow: 8,
+    //             slidesToScroll: 1,
+    //         }
+    //         },
+    //         {
+    //         breakpoint: 600,
+    //         settings: {
+    //             slidesToShow: 4,
+    //             slidesToScroll: 1
+    //         }
+    //         },
+    //         {
+    //         breakpoint: 480,
+    //         settings: {
+    //             slidesToShow: 2,
+    //             slidesToScroll: 1
+    //         }
+    //         },
+    //         {
+    //         breakpoint: 0,
+    //         settings: {
+    //             slidesToShow: 2,
+    //             slidesToScroll: 1
+    //         }
+    //         }
+    //     ]
+    //   });
 
     });
 // End ready

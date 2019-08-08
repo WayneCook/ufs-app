@@ -45,6 +45,10 @@
         transition: left .25s ease-out;
     }
 
+    .container-fluid.about-section {
+        background-image: url('/images/about-background-mobile.jpg');
+    }
+
     .phone-icon-wrapper {
         display: block;
         width: 60px;
