@@ -21,7 +21,7 @@
         <div class="main-container m-0 p-0">
                 <div class="intro-animation-wrapper container-fluid  m-0 p-0">
                         <div class="intro-logo-wrapper">
-                            <img src="{{ asset('images/logo_pieces/circle.png') }}" class="logo-animation logo_circle bounceInDown delay-1s" alt="logo_circle">
+                            <img src="{{ asset('images/logo_pieces/circle.png') }}" class="logo-animation circle-after logo_circle bounceInDown" alt="logo_circle">
                             <img src="{{ asset('images/logo_pieces/bottom.png') }}" class="logo-animation logo_bottom zoomInDown rollIn" alt="logo_bottom">
                             <img src="{{ asset('images/logo_pieces/left.png') }}" class="logo-animation logo_left zoomInUp" alt="logo_left">
                             <img src="{{ asset('images/logo_pieces/logo-u.png') }}" class="logo-animation logo_letters zoomInLeft" alt="logo_letters">
@@ -371,14 +371,18 @@ $(document).ready(function() {
         animate();
     }
     function setcookie(){
-        document.cookie = 'animated=true';
+        //Set animation cookie
+        var now = new Date();
+        var minutes = 20;
+        now.setTime(now.getTime() + (minutes * 60 * 1000));
+        document.cookie="animated=true";
+        document.cookie = "expires=" + now.toUTCString() + ";"
     }
 
     function animate(){
         $('body').toggleClass('noScroll');
         $('.logo-animation').toggleClass('animated')
-        $('.intro-animation-wrapper').delay( 3500 ).fadeOut( 2000, function(){
-
+        $('.intro-animation-wrapper').delay( 3500 ).fadeOut( 3000, function(){
         $('body').toggleClass('noScroll');
         });
     }
