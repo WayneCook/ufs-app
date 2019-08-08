@@ -68,7 +68,9 @@ class MessagesController extends Controller
         $message->fill($request->all());
         $message->save();
 
-        Mail::to('waynedemetra@gmail.com', 'zickpranks@gmail.com')->send(new MessageSent($message));
+
+        $to = explode(',', env('ADMIN_EMAILS'));
+        Mail::to($to)->send(new MessageSent($message));
 
         return redirect()->route('home')->with('success', 'Thank you for contacting us, you will hear back from us shortly.');
 
