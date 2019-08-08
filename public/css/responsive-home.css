@@ -47,6 +47,7 @@
 
     .container-fluid.about-section {
         background-image: url('/images/about-background-mobile.jpg');
+
     }
 
     .phone-icon-wrapper {
@@ -105,8 +106,8 @@
         background-color: transparent;
         display: block!important;
         position: relative;
-        transition: left .25s ease-out;
-        left: -300px;
+        transition: left .5s ease-out;
+        left: -1000px;
     }
 
     .nav-container.active {
@@ -194,6 +195,11 @@
     .main-section {
         background-image: url("/images/forklift-background-small.jpg");
 
+    }
+
+    .container-fluid.about-section {
+
+        background-position: -100px;
     }
 
 }
