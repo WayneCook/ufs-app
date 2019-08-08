@@ -356,7 +356,7 @@
 <script src="{{ asset('js/jquery-nav.js') }}"></script>
 <script type="text/javascript">
 
-$(document).ready(function() {
+$(window).load(function() {
 
 
 	$('#navigation').onePageNav();
@@ -430,6 +430,8 @@ $(document).ready(function() {
 
     });
 // End ready
+
+
 
 
 $(window).scroll(function(){
