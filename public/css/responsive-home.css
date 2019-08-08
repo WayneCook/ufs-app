@@ -196,7 +196,32 @@
 
     }
 
+}
 
+@media screen and (min-width: 577px) {
+
+    .main-section {
+        background-image: url("/images/main-small.jpg");
+
+    }
+
+}
+
+@media screen and (min-width: 900px) {
+
+    .main-section {
+        background-image: url("/images/main_medium.jpg");
+
+    }
+
+}
+
+@media screen and (min-width: 1290px) {
+
+    .main-section {
+        background-image: url("/images/main_large.jpg");
+
+    }
 
 }
 
