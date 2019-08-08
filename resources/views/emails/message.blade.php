@@ -1,4 +1,3 @@
-{{-- <h1>{{ $message_sent->name }}</h1> --}}
 
 <h3>YOU HAVE A NEW MESSAGE</h3>
 <hr>
