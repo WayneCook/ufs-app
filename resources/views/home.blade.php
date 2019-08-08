@@ -145,7 +145,7 @@
                         </div>
                     </div>
                 </section>
-                {{-- <div class="box-shadow-wrapper">
+                <div class="box-shadow-wrapper">
                         <div class="brands-section-wrapper container-fluid">
                             <div class="row brand-images-container">
                                 <div class="p-0"><img src="{{ asset('images/brands/brand_1.jpg') }}" alt="Forklift-brand"></div>
@@ -174,7 +174,7 @@
                                 <div class="p-0"><img src="{{ asset('images/brands/brand_24.jpg') }}" alt="Forklift-brand"></div>
                             </div>
                         </div>
-                    </div> --}}
+                    </div>
                     {{-- /brands-section-wrapper --}}
 
                 <section id="contact" class="container-fluid form-section-wrapper scrollable">
@@ -351,8 +351,8 @@
 
 
 <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-{{-- <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script> --}}
-{{-- <script src="{{ asset('slick-carousel/slick/slick.js') }}"></script> --}}
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script src="{{ asset('slick-carousel/slick/slick.js') }}"></script>
 <script src="{{ asset('js/jquery-nav.js') }}"></script>
 <script type="text/javascript">
 
@@ -387,46 +387,46 @@ $(window).load(function() {
         });
     }
 
-    // $('.brand-images-container').slick({
-    //     slidesToShow: 8,
-    //     mobileFirst: true,
-    //     infinite: true,
-    //     slidesToScroll: 1,
-    //     pauseOnHover: false,
-    //     pauseOnFocus: false,
-    //     autoplay: true,
-    //     autoplaySpeed: 700,
-    //     responsive: [
-    //         {
-    //         breakpoint: 1024,
-    //         settings: {
-    //             slidesToShow: 8,
-    //             slidesToScroll: 1,
-    //         }
-    //         },
-    //         {
-    //         breakpoint: 600,
-    //         settings: {
-    //             slidesToShow: 4,
-    //             slidesToScroll: 1
-    //         }
-    //         },
-    //         {
-    //         breakpoint: 480,
-    //         settings: {
-    //             slidesToShow: 2,
-    //             slidesToScroll: 1
-    //         }
-    //         },
-    //         {
-    //         breakpoint: 0,
-    //         settings: {
-    //             slidesToShow: 2,
-    //             slidesToScroll: 1
-    //         }
-    //         }
-    //     ]
-    //   });
+    $('.brand-images-container').slick({
+        slidesToShow: 8,
+        mobileFirst: true,
+        infinite: true,
+        slidesToScroll: 1,
+        pauseOnHover: false,
+        pauseOnFocus: false,
+        autoplay: true,
+        autoplaySpeed: 700,
+        responsive: [
+            {
+            breakpoint: 1024,
+            settings: {
+                slidesToShow: 8,
+                slidesToScroll: 1,
+            }
+            },
+            {
+            breakpoint: 600,
+            settings: {
+                slidesToShow: 4,
+                slidesToScroll: 1
+            }
+            },
+            {
+            breakpoint: 480,
+            settings: {
+                slidesToShow: 2,
+                slidesToScroll: 1
+            }
+            },
+            {
+            breakpoint: 0,
+            settings: {
+                slidesToShow: 2,
+                slidesToScroll: 1
+            }
+            }
+        ]
+      });
 
     });
 // End ready
