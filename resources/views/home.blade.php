@@ -15,7 +15,7 @@
         <link rel="stylesheet" href="{{ asset('css/intro-animation.css') }}">
 
     </head>
-    <body>
+    <body class="noScroll">
 
 
         <div class="main-container m-0 p-0">
@@ -359,12 +359,11 @@
 <script src="{{ asset('js/jquery-nav.js') }}"></script>
 <script type="text/javascript">
 
+
 $(window).load(function() {
 
 
 	$('#navigation').onePageNav();
-
-
 
     if(document.cookie.indexOf('animated') > -1 ) {
         $('.intro-animation-wrapper').hide();
@@ -383,7 +382,7 @@ $(window).load(function() {
     }
 
     function animate(){
-        $('body').toggleClass('noScroll');
+
         $('.logo-animation').toggleClass('animated')
         $('.intro-animation-wrapper').delay( 3500 ).fadeOut( 3000, function(){
         $('body').toggleClass('noScroll');
