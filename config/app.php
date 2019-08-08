@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Universal Forlift Services'),
+    'name' => env('APP_NAME', 'Universal Forlift Service'),
 
     /*
     |--------------------------------------------------------------------------
