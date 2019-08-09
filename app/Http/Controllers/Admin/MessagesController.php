@@ -58,7 +58,7 @@ class MessagesController extends Controller
 
         $validator = Validator::make(request()->all(), [
             'name' => 'required|string|max:50|min:3',
-            'email' => 'max:50',
+            'email' => 'required|max:50',
             'phone' => 'max:25',
             'location' => 'max:25',
             'body' => 'required|string|max:1000|min:3',
@@ -70,6 +70,7 @@ class MessagesController extends Controller
 
 
         $to = explode(',', env('ADMIN_EMAILS'));
+
         Mail::to($to)->send(new MessageSent($message));
 
         return redirect()->route('home')->with('success', 'Thank you for contacting us, you will hear back from us shortly.');
