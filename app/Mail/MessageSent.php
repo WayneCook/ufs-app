@@ -32,9 +32,7 @@ class MessageSent extends Mailable
      */
     public function build()
     {
-
-
         return $this->from($this->message_sent->email)->view('emails.message');
-        // return $this->view('emails.message');
+
     }
 }
