@@ -267,7 +267,7 @@
                     <div class="row">
                         <div class="p-4 about-right-container d-flex flex-column justify-content-center">
                             <h1 class="text-left font-weight-bold">ABOUT US</h1>
-                            <p>Residents throughout the local area have turned to us for all of their forklift repair needs. With free estimates and fast turnaround, we are known for our personal service and expertise in all forms of specialized forklift repair and maintenance.</p>
+                            <p>Businesses throughout the local area have turned to us for all of their forklift repair needs. With free estimates and fast turnaround, we are known for our personal service and expertise in all forms of specialized forklift repair and maintenance.</p>
                         </div>
                      </div>
                  </div>
