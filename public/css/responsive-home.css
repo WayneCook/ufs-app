@@ -106,8 +106,10 @@
         background-color: transparent;
         display: block!important;
         position: relative;
-        transition: left .5s ease-out;
-        left: -1000px;
+        transition: left .5s cubic-bezier(0.12, 0.41, 0, 0.99);
+        width: 268px;
+        padding: 0px;
+        left: -269px;
     }
 
     .nav-container.active {

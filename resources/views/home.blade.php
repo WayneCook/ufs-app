@@ -360,10 +360,13 @@
 <script type="text/javascript">
 
 
+
+
 $(window).load(function() {
 
-
 	$('#navigation').onePageNav();
+
+
 
     if(document.cookie.indexOf('animated') > -1 ) {
         $('.intro-animation-wrapper').hide();
