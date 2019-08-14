@@ -200,7 +200,14 @@
 
 		scrollTo: function(target, callback) {
 
-            var navHeight = $('.head-nav-wrapper').outerHeight();
+            windowsize = $(window).width();
+
+            if(windowsize < 991) {
+                var navHeight = $('.mobile-nav').outerHeight() -1;
+            } else {
+                var navHeight = $('.scroll-nav').outerHeight();
+            }
+
 			var offset = $(target).offset().top-navHeight;
 
 			$('html, body').animate({

@@ -43,12 +43,12 @@ body.noScroll { /* Disable scrolling */
 
 img.logo-animation {
     display: none;
-    animation-duration: 2s;
+    animation-duration: 1.75s;
 }
 
 img.logo-animation.circle-after {
-    animation-duration: 1.10s;
-    animation-delay: 1.6s;
+    animation-duration: 1.15s;
+    animation-delay: .9s;
 }
 
 

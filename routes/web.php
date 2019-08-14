@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/test', function(){
-    return view('animation');
+    return view('newHome');
 });
 
 
