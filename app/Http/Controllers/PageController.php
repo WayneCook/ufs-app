@@ -14,14 +14,8 @@ class PageController extends Controller
      */
     public function index()
     {
-
-
-
         $page = Page::where('slug', 'home')->first();
         views($page)->record();
-
-        dd(views($page)->count());
-
 
         return view('home');
     }

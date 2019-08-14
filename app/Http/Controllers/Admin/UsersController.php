@@ -28,7 +28,6 @@ class UsersController extends Controller
         ->setCssClasses('breadcrumb')
         ->setDivider('')
         ->render();
-
         return view('admin/users/show',  ['bread' => $bread, 'count' => $users->all()->count()]);
     }
 
@@ -39,7 +38,6 @@ class UsersController extends Controller
      */
     public function create(Role $roles)
     {
-
         $breadcrumbs = new Breadcrumbs();
         $breadcrumbs->addCrumb('Admin', 'admin')
         ->addCrumb('Users', 'users')
@@ -47,7 +45,6 @@ class UsersController extends Controller
         ->setCssClasses('breadcrumb')
         ->setDivider('')
         ->render();
-
         return view('admin.users.create', ['bread' => $breadcrumbs, 'roles' => $roles->isNotSuperAdmin()->get()]);
     }
 
@@ -59,14 +56,12 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8|confirmed',
             'role' => 'required',
         ]);
-
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -74,13 +69,11 @@ class UsersController extends Controller
             ]);
 
         $user->roles()->sync($request->role);
-
         $notification = array(
             'message' => 'User created successfully!',
             'alert-type' => 'success'
         );
         return redirect('admin/users')->with($notification);
-
     }
 
     /**
@@ -91,14 +84,11 @@ class UsersController extends Controller
      */
     public function show(User $user)
     {
-
         // If super-admin
         if($user->hasRole('super-admin') && !Auth::user()->hasRole('super-admin')){
            return redirect()->back();
         }
-
         $roles = Role::where('slug', '!=', 'super-admin')->get();
-
         $breadcrumbs = new Breadcrumbs();
         $breadcrumbs->addCrumb('Admin', 'admin')
         ->addCrumb('Users', 'users')
@@ -106,7 +96,6 @@ class UsersController extends Controller
         ->setCssClasses('breadcrumb')
         ->setDivider('')
         ->render();
-
         return view('admin.users.edit',['user' => $user, 'bread' => $breadcrumbs, 'roles' => $roles]);
     }
 
@@ -130,13 +119,11 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-
         $validatedData = $request->validate([
             'name' => 'bail|required|max:25|min:3',
             'email' => 'bail|required|email|max:50|min:5',
             'role' => 'required',
         ]);
-
         $data = $request->all();
         // Get and update user data
         $user = User::with('roles')->find($id);

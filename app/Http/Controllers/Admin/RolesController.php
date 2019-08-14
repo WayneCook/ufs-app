@@ -17,19 +17,14 @@ class RolesController extends Controller
      */
     public function index()
     {
-
         $roles = Role::all();
-
         $breadcrumbs = new Breadcrumbs();
         $breadcrumbs->addCrumb('Admin', 'admin')
         ->addCrumb('Roles')
         ->setCssClasses('breadcrumb')
         ->setDivider('')
         ->render();
-
         return view('admin/roles/index', ['roles' => $roles, 'bread' => $breadcrumbs]);
-
-
     }
 
     /**
@@ -39,9 +34,7 @@ class RolesController extends Controller
      */
     public function create()
     {
-
         $permissions = Permission::all();
-
         $breadcrumbs = new Breadcrumbs();
         $breadcrumbs->addCrumb('Admin', 'admin')
         ->addCrumb('Roles', 'roles')
@@ -49,8 +42,6 @@ class RolesController extends Controller
         ->setCssClasses('breadcrumb')
         ->setDivider('')
         ->render();
-
-
         return view('admin/roles/create', ['bread' => $breadcrumbs, 'permissions' => $permissions]);
     }
 
@@ -62,7 +53,6 @@ class RolesController extends Controller
      */
     public function store(Request $request)
     {
-
         $validatedData = $request->validate([
             'name' => 'required|string|max:25|min:3',
         ]);
@@ -71,10 +61,7 @@ class RolesController extends Controller
             'name' => $request->name,
             'slug' => str_slug($request->name),
             ]);
-
         $role->permissions()->sync($request->permission);
-
-
         $notification = array(
             'message' => 'Role created successfully!',
             'alert-type' => 'success'
@@ -102,11 +89,8 @@ class RolesController extends Controller
      */
     public function edit($id)
     {
-
         $role = Role::with('permissions')->find($id);
-
         $permissions = Permission::all();
-
         $breadcrumbs = new Breadcrumbs();
         $breadcrumbs->addCrumb('Admin', 'admin')
         ->addCrumb('Roles', 'roles')
@@ -114,9 +98,7 @@ class RolesController extends Controller
         ->setCssClasses('breadcrumb')
         ->setDivider('')
         ->render();
-
         return view('admin.roles.edit',['role' => $role, 'bread' => $breadcrumbs, 'permissions' => $permissions]);
-
     }
 
     /**
@@ -128,20 +110,14 @@ class RolesController extends Controller
      */
     public function update(Request $request, $id)
     {
-
         $validatedData = $request->validate([
             'name' => 'required|string|max:25|min:3',
         ]);
-
         $role = Role::with('permissions')->find($id);
-
         $role->name = $request->name;
         $role->slug = str_slug($request->name);
-
         $role->permissions()->sync($request->permission);
-
         $role->save();
-
         $notification = array(
             'message' => 'Role updated successfully!',
             'alert-type' => 'success'
@@ -157,16 +133,12 @@ class RolesController extends Controller
      */
     public function destroy($id)
     {
-
         $role = Role::findOrFail($id);
-
         $role->delete();
-
-            $notification = array(
-                'message' => 'Role deleted successfully!',
-                'alert-type' => 'success'
-            );
-            return redirect('admin/roles')->with($notification);
-
+        $notification = array(
+            'message' => 'Role deleted successfully!',
+            'alert-type' => 'success'
+        );
+        return redirect('admin/roles')->with($notification);
     }
 }

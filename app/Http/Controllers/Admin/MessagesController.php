@@ -26,7 +26,6 @@ class MessagesController extends Controller
         ->setCssClasses('breadcrumb')
         ->setDivider('')
         ->render();
-
         return view('admin/messages/index', ['bread' => $breadcrumbs]);
     }
 
@@ -67,14 +66,9 @@ class MessagesController extends Controller
         $message = new Message();
         $message->fill($request->all());
         $message->save();
-
-
         $to = explode(',', env('ADMIN_EMAILS'));
-
         Mail::to($to)->send(new MessageSent($message));
-
         return redirect()->route('home')->with('success', 'Thank you for contacting us, you will hear back from us shortly.');
-
     }
 
     /**
@@ -88,7 +82,6 @@ class MessagesController extends Controller
         $message = Message::findOrFail($id);
         $message->read = true;
         $message->save();
-
         $breadcrumbs = new Breadcrumbs();
         $breadcrumbs->addCrumb('Admin', 'admin')
         ->addCrumb('Messages', 'messages')
@@ -96,8 +89,6 @@ class MessagesController extends Controller
         ->setCssClasses('breadcrumb')
         ->setDivider('')
         ->render();
-
-
         return view('admin/messages/show', ['message' => $message, 'bread' => $breadcrumbs]);
     }
 
@@ -134,7 +125,6 @@ class MessagesController extends Controller
     {
         $message = Message::findOrFail($id);
         $message->delete();
-
         $notification = array(
             'message' => 'Message deleted successfully!',
             'alert-type' => 'success'
@@ -152,12 +142,10 @@ class MessagesController extends Controller
     public function markAllRead()
     {
         $affected = DB::table('messages')->where('read', '=', 0)->update(array('read' => 1));
-
         $notification = array(
             'message' => 'Messages updated successfully!',
             'alert-type' => 'success'
         );
         return redirect('admin/messages')->with($notification);
     }
-
 }

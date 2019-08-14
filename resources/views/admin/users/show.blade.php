@@ -29,31 +29,30 @@
         </div>
         <!-- /.col -->
         <div class="col-md-4 col-xs-12">
-                <div class="info-box">
-                    <span class="info-box-icon bg-aqua"><i class="ion ion-ios-people-outline"></i></span>
-                    <div class="info-box-content">
-                        <span class="info-box-text">Administrators</span>
-                        <span class="info-box-number">{{ $admin['total_admin'] }}</span>
-                    </div>
-                    <!-- /.info-box-content -->
+            <div class="info-box">
+                <span class="info-box-icon bg-aqua"><i class="ion ion-ios-people-outline"></i></span>
+                <div class="info-box-content">
+                    <span class="info-box-text">Administrators</span>
+                    <span class="info-box-number">{{ $admin['total_admin'] }}</span>
                 </div>
-                <!-- /.info-box -->
+                <!-- /.info-box-content -->
             </div>
-            <!-- /.col -->
-            <div class="col-md-4 col-xs-12">
-                    <div class="info-box">
-                        <span class="info-box-icon bg-green"><i class="ion ion-ios-people-outline"></i></span>
-                        <div class="info-box-content">
-                            <span class="info-box-text">Members</span>
-                            <span class="info-box-number">{{ $admin['total_member'] }}</span>
-                        </div>
-                        <!-- /.info-box-content -->
-                    </div>
-                    <!-- /.info-box -->
+            <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+        <div class="col-md-4 col-xs-12">
+            <div class="info-box">
+                <span class="info-box-icon bg-green"><i class="ion ion-ios-people-outline"></i></span>
+                <div class="info-box-content">
+                    <span class="info-box-text">Members</span>
+                    <span class="info-box-number">{{ $admin['total_member'] }}</span>
                 </div>
-                <!-- /.col -->
+                <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
     </div>
-
     <div class="box box-warning">
         <div class="box-header with-border custom-tools">
             <h3 class="box-title">User Management</h3>
@@ -70,7 +69,6 @@
             <!-- /.box-tools -->
         </div>
         <!-- /.box-header -->
-
         <div class="box-body">
             <table class="table table-striped nowrap" id="users-table">
                 <thead>

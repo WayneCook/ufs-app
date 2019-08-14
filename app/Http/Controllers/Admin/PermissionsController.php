@@ -17,16 +17,13 @@ class PermissionsController extends Controller
     public function index()
     {
         $permissions = Permission::all();
-
         $breadcrumbs = new Breadcrumbs();
         $breadcrumbs->addCrumb('Admin', 'admin')
         ->addCrumb('Permissions')
         ->setCssClasses('breadcrumb')
         ->setDivider('')
         ->render();
-
         return view('admin/permissions/index',['permissions' => $permissions, 'bread' => $breadcrumbs]);
-
     }
 
     /**
@@ -36,7 +33,6 @@ class PermissionsController extends Controller
      */
     public function create()
     {
-
         $breadcrumbs = new Breadcrumbs();
         $breadcrumbs->addCrumb('Admin', 'admin')
         ->addCrumb('Permissions', 'permissions')
@@ -44,7 +40,6 @@ class PermissionsController extends Controller
         ->setCssClasses('breadcrumb')
         ->setDivider('')
         ->render();
-
         return view('admin/permissions/create', ['bread' => $breadcrumbs]);
     }
 
@@ -56,25 +51,18 @@ class PermissionsController extends Controller
      */
     public function store(Request $request)
     {
-
         $validatedData = $request->validate([
             'name' => 'required|string|max:25|min:3',
         ]);
-
         $role = Permission::create([
             'name' => $request->name,
             'slug' => str_slug($request->name),
             ]);
-
         $notification = array(
             'message' => 'Permission created successfully!',
             'alert-type' => 'success'
         );
         return redirect('admin/permissions')->with($notification);
-
-
-
-
     }
 
     /**
@@ -96,7 +84,6 @@ class PermissionsController extends Controller
      */
     public function edit($id)
     {
-
         $permission = Permission::findOrFail($id);
         $breadcrumbs = new Breadcrumbs();
         $breadcrumbs->addCrumb('Admin', 'admin')
@@ -105,9 +92,7 @@ class PermissionsController extends Controller
         ->setCssClasses('breadcrumb')
         ->setDivider('')
         ->render();
-
         return view('admin/permissions/edit', ['permission' => $permission, 'bread' => $breadcrumbs]);
-
     }
 
     /**
@@ -119,23 +104,18 @@ class PermissionsController extends Controller
      */
     public function update(Request $request, $id)
     {
-
-
         $validatedData = $request->validate([
             'name' => 'required|string|max:25|min:3',
         ]);
-
         $role = Permission::findOrFail($id);
         $role->name = $request->name;
         $role->slug = str_slug($request->name);
         $role->save();
-
         $notification = array(
             'message' => 'Role updated successfully!',
             'alert-type' => 'success'
         );
         return redirect('admin/permissions')->with($notification);
-
     }
 
     /**
@@ -148,12 +128,10 @@ class PermissionsController extends Controller
     {
         $permission = Permission::findOrFail($id);
         $permission->delete();
-
         $notification = array(
             'message' => 'Role deleted successfully!',
             'alert-type' => 'success'
         );
         return redirect('admin/permissions')->with($notification);
-
     }
 }

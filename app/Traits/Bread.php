@@ -10,5 +10,4 @@ trait Bread {
         return config("bread.{$name}");
     }
 
-
 }
