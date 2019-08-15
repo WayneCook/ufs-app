@@ -1,8 +1,8 @@
 <section class="service-area-wrapper container-fluid" style="background-image: url('{{ asset('images/map_background.jpg') }}')">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 order-md-1 col-md-12 p-4 map-wrapper">
-                <iframe allowfullscreen src="https://www.google.com/maps/d/embed?mid=1IPC5HJbX8j1jLmnX6MWaEUs9e6WFbc3X" style="border:none;" width="100%" height="380"></iframe>
+            <div class="col-lg-8 order-md-1 col-md-12 p-0 map-wrapper" style="overflow:hidden;">
+                <iframe allowfullscreen src="https://www.google.com/maps/d/u/0/embed?mid=1i_dlLGhVgfWKeaZ0pnJxJ7O1EAoF8cJI&z=11" style="position:absolute; top:-78px; overflow:hidden; border:none;" width="100%" height="600px"></iframe>
             </div>
             <div class="order-first order-md-2 col-lg-4 col-md-12 service-area-right d-flex flex-column justify-content-center pl-4">
                 <div data-aos="fade-left" class=location-icon-wrapper>

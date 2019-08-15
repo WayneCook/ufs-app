@@ -26,8 +26,8 @@
             @include('sections.serviceAreaSection')
             @include('sections.footerSection')
         </div>
-        <script src="{{ asset('js/aos/aos.min.js') }}"></script>
         <script src="{{ asset('js/app.js') }}"></script>
+        <script src="{{ asset('js/aos/aos.min.js') }}"></script>
         {{-- Brands carousel --}}
         <script src="{{ asset('js/slick-carousel/slick/slick.min.js') }}"></script>
         {{-- Scrollable navigation --}}

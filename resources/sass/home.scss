@@ -267,7 +267,8 @@ nav {
 }
 
 .map-wrapper {
-    margin: 80px 0px;
+    // margin: 80px 0px;
+    height: 522px;
 }
 
 .location-icon {
@@ -331,7 +332,6 @@ nav {
 
 .head-nav-wrapper {
     position: fixed;
-    height: 197px;
     width: 100%;
     z-index: 1;
 }
@@ -528,15 +528,14 @@ form {
 }
 
 .footer-container {
-    padding: 95px 0px 107px 0px;
+    padding: 64px 0px 64px 0px;
 }
 
 .mobile-nav {
     display: none;
-
 }
 
-  .ham {
+.ham {
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
     transition: transform 400ms;
@@ -544,7 +543,7 @@ form {
     -webkit-user-select: none;
     -ms-user-select: none;
     user-select: none;
-  }
+}
   .hamRotate.active {
     transform: rotate(45deg);
   }
@@ -580,8 +579,8 @@ form {
 }
 
 .contact-section-right {
-    padding-top: 40px!important;
-    padding-bottom: 40px!important;
+    padding-top: 64px!important;
+    padding-bottom: 64px!important;
 }
 
 .text-wrapper-large

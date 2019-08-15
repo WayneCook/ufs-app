@@ -27,7 +27,7 @@
 </footer>
 <div class="container-fluid copyright-container">
     <div class="container p-4 d-flex flex-column justify-content-center">
-        <p class="rights"><span>©&nbsp; </span><span class="copyright-year">2019</span><span>&nbsp;</span><span>Universal Forklift Services</span></p>
+        <p class="rights"><span>©&nbsp; </span><span class="copyright-year">2019</span><span>&nbsp;</span><span>Universal Forklift Service</span></p>
     </div>
 </div>
 <a href="tel:562-450-4194">
