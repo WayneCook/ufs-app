@@ -73,7 +73,7 @@
                 <div data-aos="fade-left" class="location-icon-wrapper">
                     <span class="location-icon">@include('svgs/phone_icon')</span>
                 </div>
-                <h1 data-aos="fade-left">562-450-4194</h1>
+                <h1 data-aos="fade-left">323-705-9405</h1>
                 <p data-aos="fade-left">Feel free to contact us using the phone number above or send us a message to get your free estimate.</p>
             </div>
         </div>

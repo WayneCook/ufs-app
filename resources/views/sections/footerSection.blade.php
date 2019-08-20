@@ -18,7 +18,7 @@
             </div>
             <div class="col">
                 <h5 class="font-weight-bold text-dark">CONTACT</h5>
-                <span style="color: gray">562-450-4194</span>
+                <span style="color: gray">323-705-9405</span>
                 <br>
                 <a class="footer-links" href="#contact">Form</a>
             </div>
@@ -30,7 +30,7 @@
         <p class="rights"><span>©&nbsp; </span><span class="copyright-year">2019</span><span>&nbsp;</span><span>Universal Forklift Service</span></p>
     </div>
 </div>
-<a href="tel:562-450-4194">
+<a href="tel:323-705-9405">
     <div class="phone-icon-wrapper">
         @include('svgs/phone_regular');
     </div>
